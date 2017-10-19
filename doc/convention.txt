@@ -1,0 +1,27 @@
+subject： 项目约定
+brief： 约定优于配置（convention over configuration）
+description： 除文档约定外， 其他参考<<阿里巴巴java开发手册（终极版）>>，idea安装插件“alibaba java coding Guideline”
+create_date: 2017.10.19
+
+一.文档约定
+1.模板
+    subject： ***
+    brief： ***
+    description: ***
+    create_date: ****.**.**
+
+    一.***
+    ######## thinkam ########
+    1.***
+    a)***
+    b)***
+    2.***
+    ######## Sotyoyo ########
+    1.***
+    a)***
+    b)***
+    2.***
+
+    二.***
+
+二.编程约定
