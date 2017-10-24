@@ -1,5 +1,5 @@
 subject： 市场调查
-brief： 市场已有产品功能分析及评价
+brief： 市场同类产品功能分析及评价
 description:
 create_date: 2017.10.18
 
@@ -13,45 +13,66 @@ create_date: 2017.10.18
 二.类似网站
 ######## thinkam ########
 1.http://www.36zhen.com
-a)功能:
-b)优点：
+分类：标签化
+a)优点：
 分类模块值得借鉴
 搜索功能
 可自动识别收藏内容标题
-有内容预览
-c)缺点：
+有内容部分预览
+分享
+展现：列表展现 & 卡片展现
+b)缺点：
 操作较复杂
 评论有广告
 过时网址
-分类未分层
-d)综合评价
+分类无法未分层
 
 2.https://www.gede123.com
-a)功能:
-b)优点：
+分类：标签化
+a)优点：
 有百度/google搜索框， 可以用作浏览器首页
-c)缺点：
-d)综合评价：
-用户体验糟糕
+b)缺点：
 
 3.http://sucheye.com
-a)功能:
-b)优点：
-c)缺点：
-d)综合评价
+分类：标签化
+a)优点：
+    快捷键
+    背景自定义
+b)缺点：
+    快捷键无法自定义
 
 4.https://www.dropmark.com
-a)功能:
-b)优点：
-c)缺点：
-d)综合评价
+分类：标签化
+收藏方式:
+    插件 & 文本 & url & 本地html
+a)优点：
+    A.网站内显示网址内容
+    B.可保存网址快捷方式到本地
+        点击download自动下载*.url文件，双击可用浏览器自动打开
+        .url文件格式：
+        [InternetShortcut]
+        URL=网址链接
+    C.快捷键
+    D.report a bug
+    E.help
+        FAQ & getting started
+    F.export data
+        可导出*.html， 用户可通过导出的html查看访问收藏的链接
+    G.import data
+        导入html，浏览器书签
+b)缺点：
+    部分网址无法在网站内查看
 
-5.to do:
-https://www.dropmark.com/
-https://atavi.com/about/?lang=zh
-http://saved.io/
-http://pinboard.in/
-https://www.diigo.com
+5.https://atavi.com/about/?lang=zh
+分类：标签化
+a)优点：
+    非常简洁
+    自定义展示（3种）
+    导入
+    导出html
+b)缺点：
+
+其他：
 http://lianpeng.me
 http://mybookmark.cn
 
