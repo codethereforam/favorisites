@@ -1,0 +1,31 @@
+subject： 业务逻辑设计
+description：
+create_date: 2017.10.26
+
+类
+属性
+方法
+类之间的关系
+用户操作流程在设计上的反映
+数据库设计
+
+类：
+    User：
+        properties：
+            id
+            username
+            password
+            email
+            registerDate
+        method：
+
+    Admin：
+        properties：
+            id
+            username
+            password
+            registerDate
+        method：
+
+数据库：
+
