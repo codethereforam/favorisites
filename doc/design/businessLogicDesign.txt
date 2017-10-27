@@ -17,6 +17,8 @@ create_date: 2017.10.26
             password
             email
             registerDate
+            lastLoginDate
+            status
         method：
 
     Admin：
