@@ -39,6 +39,10 @@ f)相关知识：
 2.分析设计
 a).架构分析与设计
 b).业务逻辑分析
+    用例文档
+        http://blog.csdn.net/zzyy00/article/details/1268260
+        http://www.woshipm.com/pd/80096.html
+
 c).业务逻辑设计
 c).界面设计
 
