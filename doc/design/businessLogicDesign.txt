@@ -26,13 +26,5 @@ create_date: 2017.10.26
             logId
             description
 
-    Admin：
-        properties：
-            id
-            username
-            password
-            registerDate
-        method：
-
 数据库：
 
