@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/favorisites.iml" filepath="$PROJECT_DIR$/.idea/favorisites.iml" />
+      <module fileurl="file://$PROJECT_DIR$/favorisites-admin/favorisites-admin.iml" filepath="$PROJECT_DIR$/favorisites-admin/favorisites-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/favorisites-common/favorisites-common.iml" filepath="$PROJECT_DIR$/favorisites-common/favorisites-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/favorisites-dao/favorisites-dao.iml" filepath="$PROJECT_DIR$/favorisites-dao/favorisites-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/favorisites-service/favorisites-service.iml" filepath="$PROJECT_DIR$/favorisites-service/favorisites-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/favorisites-web/favorisites-web.iml" filepath="$PROJECT_DIR$/favorisites-web/favorisites-web.iml" />
     </modules>
   </component>
 </project>
