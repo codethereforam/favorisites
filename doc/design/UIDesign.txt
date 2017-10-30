@@ -5,6 +5,6 @@ create_date: 2017.10.26
 一、前台
     首页： index.html?
     登录： login.html?
-    注册： register.html?
+    注册： regist.html?
 
 二、后台
