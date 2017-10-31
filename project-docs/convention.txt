@@ -30,3 +30,8 @@ create_date: 2017.10.19
 二.编程约定
     1.代码注释规范
     2.代码书写规范
+
+三、git
+    1.commit要加注释
+    2.提交到github：git commit -> git pull -> git push
+    3.Git 少用 Pull 多用 Fetch 和 Merge

@@ -10,7 +10,7 @@ b)个人主页
 c)收藏
     A.收藏方式：输入url & 上传html
     B.自动识别title
-    C.存储: title & 链接
+    C.存储: title & 网站logo图片 & 链接
     D.分类：文件夹式
     E.展现：
         列表 title
