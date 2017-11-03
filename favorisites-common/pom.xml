@@ -87,6 +87,29 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baidu.unbiz</groupId>
+            <artifactId>fluent-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baidu.unbiz</groupId>
+            <artifactId>fluent-validator-jsr303</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
