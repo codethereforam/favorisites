@@ -16,17 +16,38 @@
                 用户名仅支持中英文、数字和下划线
                 该用户名已有人使用
   -----------------------------、
-  步骤：
-  1：判断用户输入是否合法（当input失去焦点的时候）
+  构思：
+  1：判断用户输入是否合法（while(input失去焦点&&输入框内有值)）
       A 合法:
         *显示checkspan 并且标记为绿色勾勾。
+        *outline恢复原状
+        *隐藏errorbox
+        *提交按钮、验证码按钮 生效
       B：不合法：
         *显示checkspan 并且标记为红色叉叉
         *outline变为红色
-        *弹出errorbox 告知错误原因：
+        *弹出errorbox 告知错误原因（一次，静态）：
           ①用户名字符长度应为闭区间 [5-15] ，请不要贪心哦！/请不要缺漏哦！
           ②用户名不能为空，且不支持空格输入哦！
-          ③数字不能作为用户名首尾，更换英文字母或者是下划线试试吧！
+        
           ④我们的系统很脆弱，只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符！
           ⑤真抱歉！这个ID太抢手已经被人先注册啦，换一个试试吧！
-        *
+        *提交按钮失效，发送验证码按钮也失效。
+  实现：
+  1：oUserinput.onblur = judgeUser();
+      A:valid
+        * showCheckspan(which , boolean);
+        * resetOutline()
+        * hideErrorbox()
+        * enableButtons();
+      B:Invalid
+        * showCheckspan(which , boolean);
+        * changeOutline()
+        * showErrorbox()
+           putErrorMessage()
+        * disablebuttons()
+        
+        
+        
+        
+        
