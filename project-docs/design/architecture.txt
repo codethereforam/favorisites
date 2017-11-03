@@ -5,7 +5,7 @@ create_date: 2017.10.26
 逻辑架构
     (html + ajax) -> (MVC + DB + 缓存)
     缓存（缓存主题、session）
-    rest（前端angularJS与后台restful API用json交互）
+    rest（前端Angular/React/Vue 与后台restful API用json交互）
 
 物理架构
     所有位于一台服务器

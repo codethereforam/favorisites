@@ -18,7 +18,7 @@ public abstract class BaseServiceImpl<Mapper, Record, Example> implements BaseSe
 	public long countByExample(Example example) {
 		try {
 			Method countByExample = mapper.getClass().getDeclaredMethod("countByExample", example.getClass());
-			Object result = countByExample.invoke(mapper, example.getClass());
+			Object result = countByExample.invoke(mapper, example);
 			return Long.parseLong(String.valueOf(result));
 		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public abstract class BaseServiceImpl<Mapper, Record, Example> implements BaseSe
 	public int deleteByExample(Example example) {
 		try {
 			Method deleteByExample = mapper.getClass().getDeclaredMethod("deleteByExample", example.getClass());
-			Object result = deleteByExample.invoke(mapper, example.getClass());
+			Object result = deleteByExample.invoke(mapper, example);
 			return Integer.parseInt(String.valueOf(result));
 		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
