@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg>
+                    <props>
+                        <prop key="kaptcha.border">${kaptcha.border}</prop>
+                        <prop key="kaptcha.border.color">${kaptcha.border.color}</prop>
+                        <prop key="kaptcha.textproducer.font.color">${kaptcha.textproducer.font.color}</prop>
+                        <prop key="kaptcha.image.width">${kaptcha.image.width}</prop>
+                        <prop key="kaptcha.image.height">${kaptcha.image.height}</prop>
+                        <prop key="kaptcha.textproducer.font.size">${kaptcha.textproducer.font.size}</prop>
+                        <prop key="kaptcha.session.key">${kaptcha.session.key}</prop>
+                        <prop key="kaptcha.textproducer.char.length">${kaptcha.textproducer.char.length}</prop>
+                        <prop key="kaptcha.textproducer.font.names">${kaptcha.textproducer.font.names}</prop>
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+
+</beans>

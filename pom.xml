@@ -30,6 +30,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <mysql.connector.verion>5.1.38</mysql.connector.verion>
         <swagger.version>2.7.0</swagger.version>
+        <shiro.version>1.4.0</shiro.version>
     </properties>
 
     <dependencyManagement>
@@ -178,6 +179,35 @@
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
                 <version>1.5.0-b01</version>
+            </dependency>
+            <!--  shiro  -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-web</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <!--
+             <dependency>
+                 <groupId>org.apache.shiro</groupId>
+                 <artifactId>shiro-quartz</artifactId>
+                 <version>${shiro.version}</version>
+             </dependency>
+            -->
+
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>2.3.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -10,19 +10,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.soth.favorisites.common.util.MD5Util;
+import team.soth.favorisites.common.util.ResultUtil;
 import team.soth.favorisites.dao.dto.GetEmailCaptcha;
 import team.soth.favorisites.dao.dto.Register;
 import team.soth.favorisites.dao.dto.UserRegisterInfo;
 import team.soth.favorisites.dao.model.EmailCaptcha;
 import team.soth.favorisites.dao.model.User;
-import team.soth.favorisites.dao.model.UserExample;
 import team.soth.favorisites.service.UserService;
+import team.soth.favorisites.web.validator.UserFieldExistValidator;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Validation;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import static com.baidu.unbiz.fluentvalidator.ResultCollectors.toComplex;
@@ -46,17 +45,17 @@ public class RegisterController {
 	 * headers： "key":"Content-Type" "value":"application/json"
 	 * body：
 		{
-			"username": "u1",
-			"email": "123",
+			"username": "thinkam",
+			"email": "1203948298@qq.com",
 			"sex": 1,
-			"password": "p1",
-			"confirmedPassword": "p11",
-			"emailCaptcha": "456"
+			"password": "978299",
+			"confirmedPassword": "978299",
+			"emailCaptcha": "123456"
 		}
 	 */
 	@ApiOperation(value = "用户注册")
 	@PostMapping("/users")
-	public ComplexResult register(@RequestBody UserRegisterInfo userRegisterInfo) {
+	public ComplexResult register(@RequestBody UserRegisterInfo userRegisterInfo, HttpSession session) {
 		logger.debug("method register get param:" + userRegisterInfo);
 		//trim必要的String
 		userRegisterInfo.setUsername(StringUtils.trim(userRegisterInfo.getUsername()));
@@ -67,44 +66,8 @@ public class RegisterController {
 		ComplexResult result = FluentValidator.checkAll(new Class<?>[]{Register.class})
 				.failOver()
 				.on(userRegisterInfo, new HibernateSupportedValidator<UserRegisterInfo>().setHiberanteValidator(validator))
-				.on(userRegisterInfo.getUsername(), new ValidatorHandler<String>() {
-					@Override
-					public boolean validate(ValidatorContext context, String s) {
-						if (s == null) {
-							return false;
-						}
-						UserExample userExample = new UserExample();
-						userExample.createCriteria().andUsernameEqualTo(s);
-						if (userService.countByExample(userExample) > 0) {
-							context.addError(
-									ValidationError.create("该用户名已有人使用")
-											.setErrorCode(0)
-											.setField("username")
-											.setInvalidValue(s));
-							return false;
-						}
-						return true;
-					}
-				})
-				.on(userRegisterInfo.getEmail(), new ValidatorHandler<String>() {
-					@Override
-					public boolean validate(ValidatorContext context, String s) {
-						if (s == null) {
-							return false;
-						}
-						UserExample userExample = new UserExample();
-						userExample.createCriteria().andEmailEqualTo(s);
-						if (userService.countByExample(userExample) > 0) {
-							context.addError(
-									ValidationError.create("该邮箱已有人使用")
-											.setErrorCode(0)
-											.setField("email")
-											.setInvalidValue(s));
-							return false;
-						}
-						return true;
-					}
-				})
+				.on(userRegisterInfo.getUsername(), new UserFieldExistValidator(userService, "username", "该用户名已有人使用"))
+				.on(userRegisterInfo.getEmail(), new UserFieldExistValidator(userService, "email", "该邮箱已有人使用"))
 				.on(userRegisterInfo.getConfirmedPassword(), new ValidatorHandler<String>() {
 					@Override
 					public boolean validate(ValidatorContext context, String s) {
@@ -122,7 +85,24 @@ public class RegisterController {
 						return true;
 					}
 				})
-				//TODO:验证emailCaptcha是否正确
+				.on(userRegisterInfo.getEmailCaptcha(), new ValidatorHandler<String>() {
+					@Override
+					public boolean validate(ValidatorContext context, String s) {
+						if (s == null) {
+							return false;
+						}
+						ValidationError error = ValidationError.create("验证码错误，请检查邮箱地址或点击重新发送")
+								.setErrorCode(0)
+								.setField("emailCaptcha")
+								.setInvalidValue(s);
+						Object emailCaptcha = session.getAttribute(EMAIL_CAPTCHA);
+						if (emailCaptcha == null || !s.equalsIgnoreCase((String) emailCaptcha)) {
+							context.addError(error);
+							return false;
+						}
+						return true;
+					}
+				})
 				.doValidate()
 				.result(toComplex());
 		if (!result.isSuccess()) {
@@ -139,15 +119,8 @@ public class RegisterController {
 		user.setLocked((byte) 0);
 		user.setCreateTime(new Date());
 		int lastInsertId = userService.insert(user);
-		System.out.println(lastInsertId);
 		if (lastInsertId <= 0) {
-			result.setIsSuccess(false);
-			List<ValidationError> errors = new ArrayList<>();
-			ValidationError validationError = new ValidationError();
-			validationError.setErrorCode(1000);
-			validationError.setErrorMsg("系统后台出错");
-			errors.add(validationError);
-			result.setErrors(errors);
+			result = ResultUtil.getComplexErrorResult(1000, "系统后台出错");
 			//TODO:处理系统错误，记录日志 & 发邮件给管理员
 		}
 		//返回结果
@@ -158,6 +131,7 @@ public class RegisterController {
 	@GetMapping("/emails/{email}/emailCaptchas")
 	public ComplexResult getEmailCaptcha(@PathVariable String email, HttpSession session) {
 		logger.debug("method getEmailCaptcha get email:" + email);
+		//TODO:发送条件检查
 		//trim email
 		email = StringUtils.trim(email);
 		//邮箱格式验证,(返回结果)
@@ -172,6 +146,15 @@ public class RegisterController {
 		if (!result.isSuccess()) {
 			return result;
 		}
+		result = this.getEmailCaptcha(email, session);
+		return result;
+	}
+
+	/**
+	 * 生成并发送邮箱验证码
+	 * @return complex result
+	 */
+	public ComplexResult sendEmailCaptcha(String email, HttpSession session) {
 		//生成验证码的值
 		EmailCaptcha emailCaptcha = new EmailCaptcha();
 		String emailCaptchaValue = emailCaptcha.getValue();
@@ -179,28 +162,34 @@ public class RegisterController {
 		Object emailCaptchaInSession = session.getAttribute(EMAIL_CAPTCHA);
 		if (emailCaptchaInSession == null || !emailCaptchaInSession.equals(emailCaptchaValue)) {
 			session.setAttribute(EMAIL_CAPTCHA, emailCaptchaValue);
+			//TODO:设置验证码60s过期
 		}
 		//发送到邮箱
 		boolean success = emailCaptcha.sendEmailCaptcha(email, emailCaptchaValue);
 		//返回结果
-		result = new ComplexResult();
-		if(success) {
-			result.setIsSuccess(true);
+		ComplexResult result;
+		if (success) {
+			result = ResultUtil.getComplexSuccessResult();
 		} else {
-			result.setIsSuccess(false);
-			List<ValidationError> errors = new ArrayList<>();
-			ValidationError validationError = new ValidationError();
-			validationError.setErrorCode(0);
-			validationError.setErrorMsg("邮件发送失败");
-			errors.add(validationError);
-			result.setErrors(errors);
+			result = ResultUtil.getComplexErrorResult("邮件发送失败");
 		}
 		return result;
 	}
 
-	/*@GetMapping("users")
-	public List<User> list() {
-		return userService.selectByExample(new UserExample());
-	}*/
+	//FIXME: bad api design
+	@ApiOperation(value = "检查用户是否已经存在")
+	@GetMapping("/users")
+	public ComplexResult checkUserExist(String username, String email) {
+		logger.debug("method checkUserExist, username:" + username + ", email:" + email);
+		//check & return
+		FluentValidator validator = FluentValidator.checkAll();
+		if(StringUtils.isNotBlank(username)) {
+			validator.on(StringUtils.trim(username), new UserFieldExistValidator(userService, "username", "该用户名已有人使用"));
+		}
+		if(StringUtils.isNotBlank(email)) {
+			validator.on(StringUtils.trim(email), new UserFieldExistValidator(userService, "email", "该邮箱已有人使用"));
+		}
+		return validator.doValidate().result(toComplex());
+	}
 
 }
