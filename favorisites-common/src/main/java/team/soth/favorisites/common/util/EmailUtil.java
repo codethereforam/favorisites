@@ -34,21 +34,9 @@ public class EmailUtil {
 
 	public static boolean send(String receiverName, String receiverAccount, String subject, String content) {
 		Properties props = System.getProperties();
-
-		/*props.setProperty("proxySet", "true");
-		props.setProperty("socksProxyHost", "127.0.0.1");
-		props.setProperty("socksProxyPort", "1080");*/
-
 		props.setProperty("mail.transport.protocol", "smtp");
 		props.setProperty("mail.smtp.host", SENDER_SMTP_HOST);
 		props.setProperty("mail.smtp.auth", "true");
-
-		/*props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.setProperty("mail.smtp.socketFactory.fallback", "false");
-		props.setProperty("mail.smtp.port", "465");
-		props.setProperty("mail.smtp.socketFactory.port", "465");
-		props.setProperty("mail.smtp.ssl",  "true");
-		props.setProperty("mail.smtp.starttls.enable","true");*/
 
 		Session session = Session.getDefaultInstance(props);
 		// 设置为debug模式, 可以查看详细的发送log
@@ -87,12 +75,6 @@ public class EmailUtil {
 		message.setSentDate(new Date());
 		message.saveChanges();
 		return message;
-	}
-
-	public static void main(String[] args) {
-		boolean success = EmailUtil.send("favorisites用户", "1203948298@qq.com",
-				"123456是您的favorisites验证码", "<div style=\"text-align: center;color:dodgerblue;\">欢迎注册使用favoristes， 您的验证码是123456</div>");
-		System.out.println(success);
 	}
 
 }
