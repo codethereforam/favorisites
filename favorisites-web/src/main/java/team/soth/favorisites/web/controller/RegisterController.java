@@ -35,7 +35,6 @@ import static com.baidu.unbiz.fluentvalidator.ResultCollectors.toComplex;
 @RestController
 @Api(value = "注册管理", description = "注册管理")
 public class RegisterController {
-
 	public static final String EMAIL_CAPTCHA = "email_captcha";
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	@Autowired
