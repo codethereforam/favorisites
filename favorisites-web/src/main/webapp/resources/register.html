@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>注册页面</title>
+    <link rel="stylesheet" href="common/bootstrap.min.css">
+    <link rel="stylesheet" href="css/layout/assets.css">
+    <link rel="stylesheet" href="css/layout/layout.css">
+    <link rel="stylesheet" href="css/plugs/buttons.css">
+    <link rel="stylesheet" href="css/plugs/style.css">
+    <link rel="stylesheet" href="css/register/register.css">
+    <link rel="stylesheet" href="">
+    <style>
+
+    </style>
+</head>
+<body>
+	<!-- **********用户浏览器版本<=IE8**********-->
+    <!--[if lte IE8]>
+    <p>浏览器版本太低，请<a tagert="_blank" href="http://www.browsehappy.com">升级</a>为最新的ie浏览器！</p>
+    <![endif]-->
+	
+	<!--
+    	作者：806551840@qq.com
+    	时间：2017-11-02
+    	描述：整个页面的容器 .ct-container
+    -->
+    <div class="ct-container" class="col-md-12">
+    	<!--
+        	作者：806551840@qq.com
+        	时间：2017-11-02
+        	描述：三个页面的头部 .share-header
+        -->
+    	<header class="share-header col-md-12">
+    		
+    	</header>
+    	<!--
+        	作者：806551840@qq.com
+        	时间：2017-11-02
+        	描述：注册登录页面的主体 .register-login-content
+        -->
+        <div class="register-login-content col-md-12">
+        	
+            <div class="paper-content">
+                <header class="paper-header">Account Register</header>
+                <form action="" method="post">
+                    <ul class="form-place col-md-12" id="formplace">
+                        <li style="margin-top:5px">
+                        	<div class="user-div"><input name="username" inptype="1" id="userinput" type="text" value="" placeholder="用户名：5~15个字符，不能有空格"></div>
+                        	<span class=""></span>
+                        </li>
+                        <li>
+                        	<div class="password-div"><input name="password" inptype="1" id="passwordinput" type="password" value="" placeholder="密码：6~16个字符，首尾不能有空格"></div>
+                        	<span class=""></span>
+                        </li>
+                        <li>
+                        	<div class="cpassword-div"><input name="cpassword" inptype="1" id="cpasswordinput" type="password" value="" placeholder="确认密码：请重复你的密码"></div>
+                        	<span class=""></span>
+                        </li>
+                        <li>
+                            <span class="sex-choice"></span>
+                            <!--style="background-image: url('image/user/sex.png');border-radius: 2px;float: left;">-->
+                            <div class="sex-div" style="margin-left:20px;">
+                                <span class="sex-logo" index="1" style=""></span>
+                                <input name="sex" class="sex-radio" id="sex-female" type="radio" checked="checked" value="female" />
+                                <label name="female" class="" for="sex-female" ></label>
+                            </div>
+                            <div class="sex-div">
+                                <span class="sex-logo" index="2"></span>
+                                <input name="sex" class="sex-radio" id="sex-male" type="radio" value="male" />
+                                <label name="male" class="" for="sex-male"></label>
+                            </div>
+                            <div class="sex-div">
+                                <span class="sex-logo" index="3"></span>
+                                <input name="sex" class="sex-radio" id="sex-secret" type="radio" value="secret" />
+                                <label name="secret" class="" for="sex-secret"></label>
+                            </div>
+                            
+                        </li>
+                        
+                        <li>
+                        	<div class="email-div"><input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址"></div>
+                        	<span class=""></span>
+                        </li>
+                        
+                        <li>
+                            <div class="code-div">
+                                <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码">
+                            </div>
+
+                            <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="codebutton">
+                                <i class="fa">send</i>
+                            </button>
+
+                        </li>
+
+                        <li>
+                            <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="submitbutton">
+                                <i class="fa">submit</i>
+                            </button>
+                            <button type="reset"  class="button button-caution button-box button-raised button-giant" id="resetbutton">
+                                <i class="fa">reset</i>
+                            </button>
+
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            
+        </div>
+        
+        <!--
+        	作者：806551840@qq.com
+        	时间：2017-11-02
+        	描述：三个页面的尾部 .share-footer
+        -->
+        <footer class="share-footer col-md-12">
+        	
+        </footer>
+        
+        <div class="error-box" id="error-box"><p class="error-info" id="error-info">出错了<p></div>
+
+    </div>
+</body>
+<script src="js/register.js"></script>
+<script>
+	
+</script>
+</html>
