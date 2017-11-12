@@ -17,6 +17,7 @@ import team.soth.favorisites.dao.dto.UserRegisterInfo;
 import team.soth.favorisites.dao.model.EmailCaptcha;
 import team.soth.favorisites.dao.model.User;
 import team.soth.favorisites.service.UserService;
+import team.soth.favorisites.web.validator.PasswordMatchValidator;
 import team.soth.favorisites.web.validator.UserFieldExistValidator;
 
 import javax.servlet.http.HttpSession;
@@ -35,7 +36,7 @@ import static com.baidu.unbiz.fluentvalidator.ResultCollectors.toComplex;
 @Api(value = "注册管理", description = "注册管理")
 public class RegisterController {
 
-	private static final String EMAIL_CAPTCHA = "email_captcha";
+	public static final String EMAIL_CAPTCHA = "email_captcha";
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	@Autowired
 	private UserService userService;
@@ -68,23 +69,7 @@ public class RegisterController {
 				.on(userRegisterInfo, new HibernateSupportedValidator<UserRegisterInfo>().setHiberanteValidator(validator))
 				.on(userRegisterInfo.getUsername(), new UserFieldExistValidator(userService, "username", "该用户名已有人使用"))
 				.on(userRegisterInfo.getEmail(), new UserFieldExistValidator(userService, "email", "该邮箱已有人使用"))
-				.on(userRegisterInfo.getConfirmedPassword(), new ValidatorHandler<String>() {
-					@Override
-					public boolean validate(ValidatorContext context, String s) {
-						if (s == null) {
-							return false;
-						}
-						if (!s.equals(userRegisterInfo.getPassword())) {
-							context.addError(
-									ValidationError.create("两个密码不匹配")
-											.setErrorCode(0)
-											.setField("confirmedPassword")
-											.setInvalidValue(s));
-							return false;
-						}
-						return true;
-					}
-				})
+				.on(userRegisterInfo.getConfirmedPassword(), new PasswordMatchValidator(userRegisterInfo.getPassword(), "confirmedPassword", "两个密码不匹配"))
 				.on(userRegisterInfo.getEmailCaptcha(), new ValidatorHandler<String>() {
 					@Override
 					public boolean validate(ValidatorContext context, String s) {
