@@ -41,14 +41,14 @@ public class UserRegisterInfo {
 	 * 密码
 	 */
 	@NotBlank(message = "此处不能留空", groups = Register.class)
-	@Size(min = 6, max = 16, message = "长度应为6-16个字符", groups = Register.class)
+	@Size(min = 6, max = 16, message = "长度应为6-16个字符", groups = {Register.class, ResetPassword.class})
 	@Pattern(regexp = "[0-9a-zA-Z\\p{Punct} ”]+", message = "密码仅支持字母、数字及标点符号", groups = Register.class)
 	private String password;
 
 	/**
 	 * 确认密码
 	 */
-	@NotBlank(message = "此处不能留空", groups = Register.class)
+	@NotBlank(message = "此处不能留空", groups = {Register.class, ResetPassword.class})
 	private String confirmedPassword;
 
 	/**
