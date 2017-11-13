@@ -2,7 +2,7 @@ subject： restful api 说明
 description：
     idea运行项目
     查看restful api： http://localhost:9999/swagger-ui.html
-create_date: 2017.11.13 by thinkam
+create_date: 2017.11.13
 
 register-controller : 注册管理
     注册
