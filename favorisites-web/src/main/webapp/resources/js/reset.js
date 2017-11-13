@@ -1,3 +1,4 @@
+
 window.onload = function(){
     functions.userJudge = function (){
         var oUserinput = document.getElementById("userinput");
@@ -26,31 +27,30 @@ window.onload = function(){
             }
         }
     }
-    functions.passwordJudge = function (){
-        var oPasswordinput = document.getElementById("passwordinput");
-        oPasswordinput.onfocus = function(){
-            functions.focusInputback(this,"-325px -55px");
+    functions.emailJudge = function(){
+        var oEmailinput = document.getElementById("emailinput");
+        oEmailinput.onfocus = function(){
+            functions.focusInputback(this,"-650px -55px");
             functions.resetOutline(this);
             functions.hideCheckspan(this);
         }
-        oPasswordinput.onblur = function(){
-            functions.focusInputback(this,"-325px 0px");
+        oEmailinput.onblur = function(){
+            functions.focusInputback(this,"-650px 0px");
             var thisValue = this.value ;
-            if( thisValue== null || thisValue.replace(" ","").length == 0 || thisValue.indexOf(" ") != "-1"){
-                functions.doWrongfunction(this,"密码不能为空或者全为空格");
-                console.log(11);
-            }else if(thisValue.length < 6 || thisValue.length > 16){
-                functions.doWrongfunction(this,"密码字符长度应为闭区间 [6-16] ");
-                console.log(12);
-            }else if(  /^[0-9a-zA-Z\u4e00-\u9fa5_]{6,16}$/.test(thisValue) == false  ){
-                functions.doWrongfunction(this,"只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");
-                console.log(13);
-                //这个正则表达式有为题，需要修改
+            if( thisValue== null || thisValue.replace(" ","").length == 0){
+                functions.doWrongfunction(this,"邮箱不能为空且不能带有空格");
+                console.log(41);
+            }else if(thisValue.length > 50){
+                functions.doWrongfunction(this,"邮箱的长度不能超过50");
+                console.log(42);
+            }else if(functions.isEmail(thisValue) == false){
+                functions.doWrongfunction(this,"输入的邮箱格式不正确");
+                console.log(43);
+            }else if(functions.matchMysql(this,thisValue) == false ){
+                functions.doWrongfunction(this,"该邮箱已经被注册");
+                console.log(44);
             }else{
-                functions.temppassword = thisValue;
-                functions.doRightfunction(this,"passwordSuccess");
-                functions.doRightfunction(functions.aInputs[2],"cpasswordSuccess");
-                // functions.doRightfunction(functions.aInputs[2],"cpasswordSuccess");
+                functions.doRightfunction(this,"emailSuccess");
             }
         }
     }
@@ -87,7 +87,7 @@ window.onload = function(){
         console.log(document.getElementById("submitbutton").disabled);
     }
     functions.userJudge();
-    functions.passwordJudge();
+    functions.emailJudge();
     functions.codeJudge();
     functions.buttonsJudge();
 

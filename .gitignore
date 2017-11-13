@@ -11,3 +11,4 @@ target
 generatorConfig.xml
 *.cache
 *.lock
+jdbc-config.properties

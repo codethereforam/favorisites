@@ -130,7 +130,7 @@ public class RegisterController {
 		if (!result.isSuccess()) {
 			return result;
 		}
-		result = this.getEmailCaptcha(email, session);
+		result = this.sendEmailCaptcha(email, session);
 		return result;
 	}
 

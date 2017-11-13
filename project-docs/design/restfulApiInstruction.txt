@@ -8,12 +8,25 @@ register-controller : 注册管理
     注册
         1.检查用户名是否已经存在
             post /usernames/{username}/check_exist
+            存在 false
+            不存在 ture
         2.检查邮箱是否已经存在
             post /emails/{email}/check_exist
+            存在 false
+            不存在 ture
         3.获取邮箱验证码
             get /emails/{email}/emailCaptchas
         4.用户注册
             post /users
+            测试用例：
+            {
+              "confirmedPassword": "123456789",
+              "email": "806551840@qq.com",
+              "emailCaptcha": "c00db6",
+              "password": "123456789",
+              "sex": "1",
+              "username": "admin"
+            }
 
 login-controller : 登录管理
     登录
@@ -21,9 +34,18 @@ login-controller : 登录管理
             get /captchas
         2.登录
             post /sessions
+            测试用例：
+            {
+              "accountName": "admin",
+              "captcha": "24cc",
+              "password": "123456789",
+              "rememberMe": true
+            }
     忘记密码
         1.检查账户名是否存在
             post /users/{accountName}/check_exist
+            存在 true
+            不存在 false
         2.获取邮箱验证码
             get /emailCaptchas
         3.忘记密码

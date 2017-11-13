@@ -1,0 +1,36 @@
+.form-place .email-div{
+    background-image: url(../../img/user/input-all.png);
+    background-position: -650px 0px;
+    width:325px;
+    height:55px;
+    float: left;
+}
+.paper-content{
+    top:45%;
+    margin-top:-190px;
+    height:380px;
+}
+.form-place{
+    height:322px;
+}
+
+#submitbutton{
+    height:44px;
+    width:195px;
+    margin-top:4px;
+}
+#resetbutton{
+    height:44px;
+    width:100px;
+    margin-top:4px;
+    margin-left:16px;
+}
+.code-image{
+    height:44px;
+    width:100px;
+    background-color: lightpink;
+    float: left;
+    margin-top:4px;
+    margin-left: 36px;
+    border-radius: 4px;
+}
