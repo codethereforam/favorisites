@@ -1,60 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>重置密码</title>
+    <title>忘记密码</title>
     <link rel="stylesheet" href="common/bootstrap.min.css">
+    <link rel="stylesheet" href="css/layout/assets.css">
+    <link rel="stylesheet" href="css/layout/layout.css">
+    <link rel="stylesheet" href="css/plugs/buttons.css">
+    <link rel="stylesheet" href="css/plugs/style.css">
+    <link rel="stylesheet" href="css/reset/reset.css">
+
+    <style>
+
+    </style>
 </head>
 <body>
+<!-- **********用户浏览器版本<=IE8**********-->
+<!--[if lte IE8]>
+<p>浏览器版本太低，请<a tagert="_blank" href="http://www.browsehappy.com">升级</a>为最新的ie浏览器！</p>
+<![endif]-->
 
-<div class="container">
-    <div class="jumbotron">
-        <h1>欢迎登陆页面！</h1>
-        <p>这是一个超大屏幕（Jumbotron）的实例。</p>
-        <p><a class="btn btn-primary btn-lg" role="button">
-            学习更多</a>
-        </p>
+<!--
+    作者：806551840@qq.com
+    时间：2017-11-02
+    描述：整个页面的容器 .ct-container
+-->
+<div class="ct-container" class="col-md-12">
+    <!--
+        作者：806551840@qq.com
+        时间：2017-11-02
+        描述：三个页面的头部 .share-header
+    -->
+    <header class="share-header col-md-12">
+
+    </header>
+    <!--
+        作者：806551840@qq.com
+        时间：2017-11-02
+        描述：注册登录页面的主体 .register-login-content
+    -->
+    <div class="register-login-content col-md-12">
+
+        <div class="paper-content">
+            <header class="paper-header">Input Info</header>
+            <form action="" method="post">
+                <ul class="form-place col-md-12" id="formplace">
+                    <li style="margin-top:5px">
+                        <div class="user-div"><input name="username" id="userinput" type="text" value="" placeholder="用户名：5~15个字符"></div>
+                    </li>
+                    <li>
+                        <div class="email-div"><input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址"></div>
+                    </li>
+                    <li>
+                        <div class="code-div">
+                            <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码">
+                        </div>
+                        <div class="code-image">
+                            获取验证码
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="submitbutton">
+                            <i class="fa">submit</i>
+                        </button>
+                        <button type="reset"  class="button button-caution button-box button-raised button-giant" id="resetbutton">
+                            <i class="fa">reset</i>
+                        </button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
     </div>
-    <h2>徽章</h2>
-    <p>.badge 类指定未读消息的数量:</p>
-    <p><a href="#">收件箱 <span class="badge">21</span></a></p>
-    <a href="#">Mailbox <span class="badge">50</span></a>
 
-    <h4>胶囊式导航中的激活状态</h4>
-    <ul class="nav nav-pills">
-        <li class="active">
-            <a href="#">首页
-                <span class="badge">42</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">简介</a>
-        </li>
-        <li>
-            <a href="#">消息
-                <span class="badge">3</span>
-            </a>
-        </li>
-    </ul>
-    <br>
-    <h4>列表导航中的激活状态</h4>
-    <ul class="nav nav-pills nav-stacked" style="max-width: 260px;">
-        <li class="active">
-            <a href="#">
-                <span class="badge pull-right">42</span>首页</a>
-        </li>
-        <li>
-            <a href="#">简介</a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="badge pull-right">3</span>消息
-            </a>
-        </li>
-    </ul>
+    <!--
+        作者：806551840@qq.com
+        时间：2017-11-02
+        描述：三个页面的尾部 .share-footer
+    -->
+    <footer class="share-footer col-md-12">
 
+    </footer>
+
+    <div class="error-box" id="error-box"><p class="error-info" id="error-info">出错了<p></div>
 </div>
-
 </body>
+<script src="js/main.js"></script>
+<script src="js/reset.js"></script>
 </html>
