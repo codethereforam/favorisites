@@ -160,16 +160,24 @@ public class RegisterController {
 		return result;
 	}
 
-	//FIXME: bad api design
-	@ApiOperation(value = "检查用户是否已经存在")
-	@GetMapping("/users")
-	public ComplexResult checkUserExist(String username, String email) {
-		logger.debug("method checkUserExist, username:" + username + ", email:" + email);
+	@ApiOperation(value = "检查用户名是否已经存在")
+	@PostMapping("/usernames/{username}/check_exist")
+	public ComplexResult checkUsernameExist(@PathVariable String username) {
+		logger.debug("method checkUsernameExist, username:" + username);
 		//check & return
 		FluentValidator validator = FluentValidator.checkAll();
 		if(StringUtils.isNotBlank(username)) {
 			validator.on(StringUtils.trim(username), new UserFieldExistValidator(userService, "username", "该用户名已有人使用"));
 		}
+		return validator.doValidate().result(toComplex());
+	}
+
+	@ApiOperation(value = "检查邮箱是否已经存在")
+	@PostMapping("/emails/{email}/check_exist")
+	public ComplexResult checkEmailExist(@PathVariable String email) {
+		logger.debug("method checkEmailExist, email:" + email);
+		//check & return
+		FluentValidator validator = FluentValidator.checkAll();
 		if(StringUtils.isNotBlank(email)) {
 			validator.on(StringUtils.trim(email), new UserFieldExistValidator(userService, "email", "该邮箱已有人使用"));
 		}

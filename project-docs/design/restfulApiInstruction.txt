@@ -1,0 +1,35 @@
+subject： restful api 说明
+description：
+    idea运行项目
+    查看restful api： http://localhost:9999/swagger-ui.html
+create_date: 2017.11.13 by thinkam
+
+register-controller : 注册管理
+    注册
+        1.检查用户名是否已经存在
+            post /usernames/{username}/check_exist
+        2.检查邮箱是否已经存在
+            post /emails/{email}/check_exist
+        3.获取邮箱验证码
+            get /emails/{email}/emailCaptchas
+        4.用户注册
+            post /users
+
+login-controller : 登录管理
+    登录
+        1.获取图片验证码
+            get /captchas
+        2.登录
+            post /sessions
+    忘记密码
+        1.检查账户名是否存在
+            post /users/{accountName}/check_exist
+        2.获取邮箱验证码
+            get /emailCaptchas
+        3.忘记密码
+            post /forget_password
+    重置密码
+        1.获取session中的user
+            get /sessions/user
+        1.重置密码
+            post /reset_password

@@ -1,0 +1,19 @@
+subject： 项目部署
+description：
+create_date: 2017.11.13 by thinkam
+
+开发环境部署：
+    1.idea导入git项目
+        https://github.com/codethereforam/favorisites.git
+    2.切换分支为develop
+    3.favorisites： maven clean install
+    4.favorisites-web： jetty run
+    5.安装mysql 5.7.20 & 安装workbench
+      运行脚本： project-datamodel/favorisites.sql
+    6.查看resrful api文档
+        http://localhost:9999/swagger-ui.html
+    7.打开界面：
+        e.g. http://localhost:9999/login.html
+
+
+生产环境部署：

@@ -13,7 +13,13 @@
         </mvc:interceptor>
     </mvc:interceptors>-->
 
-    <!-- 配置静态资源，不被DispatcherServlet处理，增加缓存时间10秒 -->
-    <mvc:resources mapping="/**" location="/resources/" cache-period="10"/>
+    <!--  don't handle the static resource  -->
+    <!--<mvc:default-servlet-handler/>-->
+
+    <!-- 配置静态资源，不被DispatcherServlet处理-->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <mvc:resources mapping="/swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/**" location="/resources/"/>
+
 
 </beans>

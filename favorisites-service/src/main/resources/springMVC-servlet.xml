@@ -23,6 +23,4 @@
 
     <mvc:annotation-driven/>
 
-    <!--  don't handle the static resource  -->
-    <mvc:default-servlet-handler/>
 </beans>
