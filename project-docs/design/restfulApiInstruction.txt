@@ -7,51 +7,95 @@ create_date: 2017.11.13
 register-controller : 注册管理
     注册
         1.检查用户名是否已经存在
-            post /usernames/{username}/check_exist
-            存在 false
-            不存在 ture
+            请求：
+                post /usernames/{username}/check_exist
+            结果：
+                存在 false "error msg"
         2.检查邮箱是否已经存在
-            post /emails/{email}/check_exist
-            存在 false
-            不存在 ture
+            请求：
+                post /emails/{email}/check_exist
+            结果：
+                存在 false "error msg"
         3.获取邮箱验证码
-            get /emails/{email}/emailCaptchas
+            请求：
+                get /emails/{email}/emailCaptchas
+            结果：
+                失败 false “error message”
         4.用户注册
-            post /users
+            请求：
+                post /users
+            结果：
+                失败 false “error message”
+            字段
+                sex: 0 女 | 1 男 | 2 不愿透露
             测试用例：
-            {
-              "confirmedPassword": "123456789",
-              "email": "806551840@qq.com",
-              "emailCaptcha": "c00db6",
-              "password": "123456789",
-              "sex": "1",
-              "username": "admin"
-            }
+                {
+                  "confirmedPassword": "123456789",
+                  "email": "806551840@qq.com",
+                  "emailCaptcha": "c00db6",
+                  "password": "123456789",
+                  "sex": "1",
+                  "username": "admin"
+                }
+                {
+                    "username": "thinkam",
+                    "email": "1203948298@qq.com",
+                    "sex": "1",
+                    "password": "978299",
+                    "confirmedPassword": "978299",
+                    "emailCaptcha": "123456"
+                }
 
 login-controller : 登录管理
     登录
         1.获取图片验证码
-            get /captchas
+            请求：
+                get /captchas
+            结果：
+                返回 jpg图片 125*45
         2.登录
-            post /sessions
+            请求：
+                post /sessions
+            结果：
+                失败 false “error message”
             测试用例：
-            {
-              "accountName": "admin",
-              "captcha": "24cc",
-              "password": "123456789",
-              "rememberMe": true
-            }
+                {
+                  "accountName": "admin",
+                  "captcha": "24cc",
+                  "password": "123456789",
+                  "rememberMe": true
+                }
+                {
+                      "accountName": "thinkam",
+                      "captcha": "e5b7",
+                      "password": "978299",
+                      "rememberMe": true
+                }
     忘记密码
         1.检查账户名是否存在
-            post /users/{accountName}/check_exist
-            存在 true
-            不存在 false
+            请求：
+                post /users/{accountName}/check_exist
+            结果：
+                不存在 false "error msg"
         2.获取邮箱验证码
-            get /emailCaptchas
+            请求：
+                get /emailCaptchas
+            结果：
+                成功 true
         3.忘记密码
-            post /forget_password
+            请求：
+                post /forget_password
+            结果：
+                失败 false "error msg"
     重置密码
         1.获取session中的user
-            get /sessions/user
+            请求：
+                get /sessions/user
+            结果：
+                返回user的json对象
+                若失败，json对象中每个属性都为null
         1.重置密码
-            post /reset_password
+            请求：
+                post /reset_password
+            结果：
+                失败 false "error msg"
