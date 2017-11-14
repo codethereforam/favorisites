@@ -29,13 +29,14 @@ import static com.baidu.unbiz.fluentvalidator.ResultCollectors.toComplex;
 
 /**
  * 用户注册控制器
- * Created by thinkam on 17-11-1.
+ * @author thinkam
+ * @date 17-11-1
  */
 //TODO:接受到不符合规范的json处理
 @RestController
 @Api(value = "注册管理", description = "注册管理")
 public class RegisterController {
-	public static final String EMAIL_CAPTCHA = "email_captcha";
+	static final String EMAIL_CAPTCHA = "email_captcha";
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	@Autowired
 	private UserService userService;
@@ -125,7 +126,7 @@ public class RegisterController {
 	 * 生成并发送邮箱验证码
 	 * @return complex result
 	 */
-	public ComplexResult sendEmailCaptcha(String email, HttpSession session) {
+	ComplexResult sendEmailCaptcha(String email, HttpSession session) {
 		//生成验证码的值
 		EmailCaptcha emailCaptcha = new EmailCaptcha();
 		String emailCaptchaValue = emailCaptcha.getValue();

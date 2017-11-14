@@ -3,8 +3,15 @@ description：
 create_date: 2017.11.14
 
 前端测试
-    register.html
+    前后台错误提示不一致
 
+    register.html
+        密码允许有空格
+        密码允许有英文标点
     login.html
+        用户名 改为 账户名（用户名、邮箱）
+        图片验证码为4位
+        账户名、密码、验证码应该可以不用做格式检验
+        缺少注册按钮
 
 后台测试
