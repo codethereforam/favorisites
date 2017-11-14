@@ -18,7 +18,7 @@ register-controller : 注册管理
                 存在 false "error msg"
         3.获取邮箱验证码
             请求：
-                get /emails/{email}/emailCaptchas
+                POST /emails/{email}/send_captcha
             结果：
                 失败 false “error message”
         4.用户注册
@@ -79,12 +79,12 @@ login-controller : 登录管理
                 不存在 false "error msg"
         2.获取邮箱验证码
             请求：
-                get /emailCaptchas
+                POST /emails/send_captcha
             结果：
                 成功 true
         3.忘记密码
             请求：
-                post /forget_password
+                post /users/forget_password
             结果：
                 失败 false "error msg"
     重置密码
@@ -96,6 +96,11 @@ login-controller : 登录管理
                 若失败，json对象中每个属性都为null
         1.重置密码
             请求：
-                post /reset_password
+                post /users/reset_password
             结果：
                 失败 false "error msg"
+            测试用例：
+                {
+                  "password": "123456789",
+                  "confirmedPassword": "123456789"
+                }

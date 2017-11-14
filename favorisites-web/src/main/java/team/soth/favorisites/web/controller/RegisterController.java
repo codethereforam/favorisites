@@ -29,6 +29,7 @@ import static com.baidu.unbiz.fluentvalidator.ResultCollectors.toComplex;
 
 /**
  * 用户注册控制器
+ *
  * @author thinkam
  * @date 17-11-1
  */
@@ -100,7 +101,7 @@ public class RegisterController {
 	}
 
 	@ApiOperation(value = "获取邮箱验证码")
-	@GetMapping("/emails/{email}/emailCaptchas")
+	@PostMapping("/emails/{email}/send_captcha")
 	public ComplexResult getEmailCaptcha(@PathVariable String email, HttpSession session) {
 		logger.debug("method getEmailCaptcha get email:" + email);
 		//TODO:发送条件检查
@@ -124,6 +125,7 @@ public class RegisterController {
 
 	/**
 	 * 生成并发送邮箱验证码
+	 *
 	 * @return complex result
 	 */
 	ComplexResult sendEmailCaptcha(String email, HttpSession session) {
@@ -154,7 +156,7 @@ public class RegisterController {
 		logger.debug("method checkUsernameExist, username:" + username);
 		//check & return
 		FluentValidator validator = FluentValidator.checkAll();
-		if(StringUtils.isNotBlank(username)) {
+		if (StringUtils.isNotBlank(username)) {
 			validator.on(StringUtils.trim(username), new UserFieldExistValidator(userService, "username", "该用户名已有人使用"));
 		}
 		return validator.doValidate().result(toComplex());
@@ -166,7 +168,7 @@ public class RegisterController {
 		logger.debug("method checkEmailExist, email:" + email);
 		//check & return
 		FluentValidator validator = FluentValidator.checkAll();
-		if(StringUtils.isNotBlank(email)) {
+		if (StringUtils.isNotBlank(email)) {
 			validator.on(StringUtils.trim(email), new UserFieldExistValidator(userService, "email", "该邮箱已有人使用"));
 		}
 		return validator.doValidate().result(toComplex());

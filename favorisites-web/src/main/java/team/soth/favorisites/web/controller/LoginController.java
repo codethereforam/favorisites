@@ -186,7 +186,7 @@ public class LoginController {
 	}
 
 	@ApiOperation(value = "获取邮箱验证码")
-	@GetMapping("/emailCaptchas")
+	@PostMapping("/emails/send_captcha")
 	public ComplexResult getEmailCaptcha(HttpSession session) {
 		Object objUser = session.getAttribute(FORGET_PASSWORD_USER);
 		if (objUser == null || !(objUser instanceof User)) {
@@ -203,7 +203,7 @@ public class LoginController {
 
 	//检查验证码
 	@ApiOperation("忘记密码")
-	@PostMapping("/forget_password")
+	@PostMapping("/users/forget_password")
 	public ComplexResult forgetPassword(String emailCaptcha, HttpSession session) {
 		//检查参数是否为空
 		if(StringUtils.isBlank(emailCaptcha)) {
@@ -221,7 +221,7 @@ public class LoginController {
 
 	//FIXME: 可以执行多次reset password操作
 	@ApiOperation("重置密码")
-	@PostMapping("/reset_password")
+	@PostMapping("/users/reset_password")
 	public ComplexResult resetPassword(@RequestBody UserForgetPasswordInfo userForgetPasswordInfo, HttpSession session) {
 		//log记录参数
 		logger.debug("method resetPassword get userForgetPasswordInfo:" + userForgetPasswordInfo);
