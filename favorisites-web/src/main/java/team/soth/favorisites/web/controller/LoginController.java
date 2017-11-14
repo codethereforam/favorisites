@@ -218,6 +218,7 @@ public class LoginController {
 		return ResultUtil.getComplexSuccessResult();
 	}
 
+	//FIXME: 可以执行多次reset password操作
 	@ApiOperation("重置密码")
 	@PostMapping("/reset_password")
 	public ComplexResult resetPassword(@RequestBody UserForgetPasswordInfo userForgetPasswordInfo, HttpSession session) {

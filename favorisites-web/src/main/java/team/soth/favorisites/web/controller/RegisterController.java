@@ -40,19 +40,6 @@ public class RegisterController {
 	@Autowired
 	private UserService userService;
 
-	/*
-	 * restful接口测试
-	 * headers： "key":"Content-Type" "value":"application/json"
-	 * body：
-		{
-			"username": "thinkam",
-			"email": "1203948298@qq.com",
-			"sex": 1,
-			"password": "978299",
-			"confirmedPassword": "978299",
-			"emailCaptcha": "123456"
-		}
-	 */
 	@ApiOperation(value = "用户注册")
 	@PostMapping("/users")
 	public ComplexResult register(@RequestBody UserRegisterInfo userRegisterInfo, HttpSession session) {
