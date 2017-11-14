@@ -39,7 +39,7 @@ public class PropertiesFileUtil {
             configMap.put(name, conf);
         }
         // 判断是否打开的资源文件是否超时1分钟
-        if ((new Date().getTime() - conf.getLoadTime().getTime()) > TIME_OUT) {
+        if ((System.currentTimeMillis() - conf.getLoadTime().getTime()) > TIME_OUT) {
             conf = new PropertiesFileUtil(name);
             configMap.put(name, conf);
         }
@@ -70,7 +70,7 @@ public class PropertiesFileUtil {
     public boolean getBool(String key) {
         try {
             String value = resourceBundle.getString(key);
-            if ("true".equals(value)) {
+            if (Boolean.TRUE.toString().equals(value)) {
                 return true;
             }
             return false;

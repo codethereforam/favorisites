@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import team.soth.favorisites.common.util.MD5Util;
+import team.soth.favorisites.common.util.Md5Util;
 import team.soth.favorisites.common.util.ResultUtil;
 import team.soth.favorisites.dao.dto.ResetPassword;
 import team.soth.favorisites.dao.dto.UserForgetPasswordInfo;
@@ -245,7 +245,7 @@ public class LoginController {
 			return ResultUtil.getComplexErrorResult("没有权限");
 		}
 		User user = (User) objUser;
-		user.setPassword(MD5Util.MD5(userForgetPasswordInfo.getPassword() + user.getSalt()));
+		user.setPassword(Md5Util.md5(userForgetPasswordInfo.getPassword() + user.getSalt()));
 		int count = userService.updateByPrimaryKey(user);
 		logger.debug("count=" + count);
 		return ResultUtil.getComplexSuccessResult();
