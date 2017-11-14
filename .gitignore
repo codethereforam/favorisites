@@ -1,5 +1,7 @@
 .idea
 *.iml
+generatorConfig.xml
+jdbc-config.properties
 out
 gen
 .classpath
@@ -8,7 +10,5 @@ gen
 target
 *.log
 *.log.*
-generatorConfig.xml
 *.cache
 *.lock
-jdbc-config.properties

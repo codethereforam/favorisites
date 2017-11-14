@@ -42,7 +42,8 @@ import static com.baidu.unbiz.fluentvalidator.ResultCollectors.toComplex;
 
 /**
  * 用户登录控制器
- * Created by thinkam on 17-11-8.
+ * @author thinkam
+ * @date 17-11-8
  */
 @RestController
 @Api(value = "登录管理", description = "登录管理")
