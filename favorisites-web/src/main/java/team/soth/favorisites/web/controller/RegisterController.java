@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import team.soth.favorisites.common.util.MD5Util;
+import team.soth.favorisites.common.util.Md5Util;
 import team.soth.favorisites.common.util.ResultUtil;
 import team.soth.favorisites.dao.dto.GetEmailCaptcha;
 import team.soth.favorisites.dao.dto.Register;
@@ -85,7 +85,7 @@ public class RegisterController {
 		user.setUsername(userRegisterInfo.getUsername());
 		String salt = UUID.randomUUID().toString().replaceAll("-", "");
 		user.setSalt(salt);
-		user.setPassword(MD5Util.MD5(userRegisterInfo.getPassword() + salt));
+		user.setPassword(Md5Util.md5(userRegisterInfo.getPassword() + salt));
 		user.setEmail(userRegisterInfo.getEmail());
 		user.setSex(userRegisterInfo.getSex());
 		user.setLocked((byte) 0);

@@ -17,11 +17,11 @@ import org.springframework.transaction.annotation.Transactional;
 * Created by thinkam on 17-10-31.
 */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 @BaseService
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserExample> implements UserService {
 
-    private static Logger _log = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     UserMapper userMapper;

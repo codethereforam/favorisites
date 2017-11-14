@@ -9,7 +9,8 @@ import java.util.Properties;
 
 /**
  * Example类和model类实现序列化插件
- * Created by thinkam on 17-10-31.
+ * @author thinkam
+ * @date 17-10-31
  */
 public class SerializablePlugin extends PluginAdapter {
     private FullyQualifiedJavaType serializable = new FullyQualifiedJavaType("java.io.Serializable");
@@ -20,27 +21,32 @@ public class SerializablePlugin extends PluginAdapter {
     public SerializablePlugin() {
     }
 
-    public boolean validate(List<String> warnings) {
+    @Override
+	public boolean validate(List<String> warnings) {
         return true;
     }
 
-    public void setProperties(Properties properties) {
+    @Override
+	public void setProperties(Properties properties) {
         super.setProperties(properties);
         this.addGWTInterface = Boolean.valueOf(properties.getProperty("addGWTInterface")).booleanValue();
         this.suppressJavaInterface = Boolean.valueOf(properties.getProperty("suppressJavaInterface")).booleanValue();
     }
 
-    public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+    @Override
+	public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         this.makeSerializable(topLevelClass, introspectedTable);
         return true;
     }
 
-    public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+    @Override
+	public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         this.makeSerializable(topLevelClass, introspectedTable);
         return true;
     }
 
-    public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+    @Override
+	public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         this.makeSerializable(topLevelClass, introspectedTable);
         return true;
     }

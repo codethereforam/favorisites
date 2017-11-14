@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import team.soth.favorisites.common.util.MD5Util;
+import team.soth.favorisites.common.util.Md5Util;
 import team.soth.favorisites.dao.model.User;
 import team.soth.favorisites.dao.model.UserExample;
 import team.soth.favorisites.service.UserService;
@@ -44,7 +44,7 @@ public class UserAuthenticatingRealm extends AuthenticatingRealm {
 		if (user == null) {
 			throw new UnknownAccountException();
 		}
-		if (!user.getPassword().equals(MD5Util.MD5(password + user.getSalt()))) {
+		if (!user.getPassword().equals(Md5Util.md5(password + user.getSalt()))) {
 			throw new IncorrectCredentialsException();
 		}
 		if (user.getLocked() == 1) {
