@@ -46,18 +46,23 @@
             <header class="paper-header">Input Info</header>
             <form action="" method="post">
                 <ul class="form-place col-md-12" id="formplace">
-                    <li style="margin-top:5px">
-                        <div class="user-div"><input name="username" id="userinput" type="text" value="" placeholder="用户名：5~15个字符"></div>
+                    <li style="margin-top:25px;">
+                        <h2>第一步：</h2>
                     </li>
-                    <li>
-                        <div class="email-div"><input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址"></div>
+                    <li style="margin-top:0px;">
+                        <div class="email-div">
+                            <input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址">
+                            <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="codebutton">
+                                <i class="fa">send</i>
+                            </button>
+                        </div>
                     </li>
                     <li>
                         <div class="code-div">
                             <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码">
                         </div>
                         <div class="code-image">
-                            获取验证码
+
                         </div>
                     </li>
                     <li>

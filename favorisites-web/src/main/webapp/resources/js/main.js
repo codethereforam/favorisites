@@ -7,6 +7,18 @@ functions.oErrorinfo = document.getElementById("error-info");
 functions.oErrorbox = document.getElementById("error-box");
 functions.aInputs = functions.oFormplace.getElementsByTagName("input");
 
+functions.isEmail = function(strEmail) {
+    //声明邮箱正则
+    var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if(!myreg.test(strEmail))//对输入的值进行判断
+    {
+        console.log("fail");
+        return false;
+    }
+    // return true;
+}
+
+
 functions.showRightspan = function(obj){
     var oSpan = obj.parentNode.parentNode.getElementsByTagName("span")[0] ;
     if(oSpan) {
@@ -47,8 +59,8 @@ functions.showErrorbox = function(obj){
     }
     console.log(tempTop);
     console.log(tempLeft);
-    functions.oErrorbox.style['left'] = tempLeft+280+"px";
-    functions.oErrorbox.style['top'] = tempTop-60+"px";
+    functions.oErrorbox.style['left'] = tempLeft+320+"px";
+    functions.oErrorbox.style['top'] = tempTop+3+"px";
     functions.oErrorbox.style['display'] = "block";
     functions.oErrorinfo.style['display'] = "block";
 }
@@ -60,16 +72,7 @@ functions.hideErrorbox = function(){
 functions.matchMysql = function(obj,str){
 
 }
-functions.isEmail = function(strEmail) {
-    //声明邮箱正则
-    var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    if(!myreg.test(strEmail))//对输入的值进行判断
-    {
-        console.log("fail");
-        return false;
-    }
-    // return true;
-}
+
 functions.putTojson = function(str){
 
 }
