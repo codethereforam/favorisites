@@ -46,7 +46,7 @@
                 <header class="paper-header">Account Register</header>
                 <form action="" method="post">
                     <ul class="form-place col-md-12" id="formplace">
-                        <li style="margin-top:5px">
+                        <li style="margin-top:25px">
                         	<div class="user-div"><input name="username" inptype="1" id="userinput" type="text" value="" placeholder="用户名：5~15个字符，不能有空格"></div>
                         	<span class=""></span>
                         </li>
@@ -80,7 +80,12 @@
                         </li>
                         
                         <li>
-                        	<div class="email-div"><input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址"></div>
+                        	<div class="email-div">
+                                <input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址">
+                                <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="codebutton">
+                                    <i class="fa">send</i>
+                                </button>
+                            </div>
                         	<span class=""></span>
                         </li>
                         
@@ -89,18 +94,8 @@
                                 <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码">
                             </div>
 
-                            <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="codebutton">
-                                <i class="fa">send</i>
-                            </button>
-
-                        </li>
-
-                        <li>
                             <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="submitbutton">
                                 <i class="fa">submit</i>
-                            </button>
-                            <button type="reset"  class="button button-caution button-box button-raised button-giant" id="resetbutton">
-                                <i class="fa">reset</i>
                             </button>
 
                         </li>
@@ -119,7 +114,9 @@
         	
         </footer>
         
-        <div class="error-box" id="error-box"><p class="error-info" id="error-info">出错了<p></div>
+        <div id="error-box">
+            <p id="error-info">出错了<p>
+        </div>
 
     </div>
 </body>
