@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="css/plugs/buttons.css">
     <link rel="stylesheet" href="css/plugs/style.css">
     <link rel="stylesheet" href="css/reset/reset.css">
-
-    <style>
-
-    </style>
+    <script src="common/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="resetApp">
 <!-- **********用户浏览器版本<=IE8**********-->
 <!--[if lte IE8]>
 <p>浏览器版本太低，请<a tagert="_blank" href="http://www.browsehappy.com">升级</a>为最新的ie浏览器！</p>
@@ -26,7 +23,7 @@
     时间：2017-11-02
     描述：整个页面的容器 .ct-container
 -->
-<div class="ct-container" class="col-md-12">
+<div class="ct-container" ng-controller="MainController" class="col-md-12">
     <!--
         作者：806551840@qq.com
         时间：2017-11-02
@@ -44,7 +41,10 @@
 
         <div class="paper-content">
             <header class="paper-header">Input Info</header>
-            <form action="" method="post">
+
+
+
+            <form ng-if="formIf[2]" action="" method="post">
                 <ul class="form-place col-md-12" id="formplace">
                     <li style="margin-top:25px;">
                         <h2>第一步：</h2>
@@ -52,9 +52,7 @@
                     <li style="margin-top:0px;">
                         <div class="email-div">
                             <input id="emailinput" name="email" inptype="1" type="text" value="" placeholder="邮箱：请输入你的邮箱地址">
-                            <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="codebutton">
-                                <i class="fa">send</i>
-                            </button>
+
                         </div>
                     </li>
                     <li>
@@ -66,15 +64,54 @@
                         </div>
                     </li>
                     <li>
-                        <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="submitbutton">
-                            <i class="fa">submit</i>
+                        <div class="code-div">
+                            <input name="emailcode" inptype="1" type="text" id="emailcodeinput" placeholder="邮箱验证码">
+                        </div>
+                        <button type="button" class="button button-caution button-box button-raised button-giant" id="emailcodebutton">
+                            <i class="fa">send</i>
                         </button>
-                        <button type="reset"  class="button button-caution button-box button-raised button-giant" id="resetbutton">
-                            <i class="fa">reset</i>
+                    </li>
+                    <li>
+                        <button type="button" class="button button-caution button-box button-raised button-giant" id="submitbutton">
+                            <i class="fa">Next</i>
                         </button>
                     </li>
                 </ul>
             </form>
+
+            <form ng-if="formIf[1]" action="" method="post">
+                <ul class="form-place col-md-12" id="formplace">
+                    <li style="margin-top:25px;">
+                        <h2>第二步：</h2>
+                    </li>
+                    <li>
+                        <div class="password-div"><input name="password" inptype="1" id="passwordinput" type="password" value="" placeholder="输入你的新密码"></div>
+                        <span class=""></span>
+                    </li>
+                    <li>
+                        <div class="cpassword-div"><input name="cpassword" inptype="1" id="cpasswordinput" type="password" value="" placeholder="请确认你的新密码"></div>
+                        <span class=""></span>
+                    </li>
+                    <li>
+                        <button type="button" class="button button-caution button-box button-raised button-giant" id="submitbutton">
+                            <i class="fa">Next</i>
+                        </button>
+                    </li>
+                </ul>
+            </form>
+
+            <form ng-if="formIf[0]" action="" method="post">
+                <ul class="form-place col-md-12" id="formplace">
+                    <li style="margin-top:100px;">
+                        <h2>恭喜您，修改成功！</h2>
+                        <h2>正在跳转.......</h2>
+                    </li>
+
+                </ul>
+            </form>
+
+
+
         </div>
 
     </div>
@@ -93,4 +130,5 @@
 </body>
 <script src="js/main.js"></script>
 <script src="js/reset.js"></script>
+<script src="angularjs/resetApp.js"></script>
 </html>

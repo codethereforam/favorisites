@@ -1,16 +1,5 @@
-.form-place input[type=text]{
-	height:42px;
-	width: 268px;
-    margin-left:46px;
-    margin-top:5px;
-    border-radius:4px;
-    font-size: 14px;
-    font-family: 微软雅黑，Arial;
-    font-weight: 100;
-    line-height: 40px;
-    text-indent: 6px;
-}
-.form-place input[type=password]{
+
+.form-place input[inptype='1']{
 	height:42px;
 	width: 268px;
 	margin-left:45.5px;
@@ -22,18 +11,7 @@
 	line-height: 40px;
 	text-indent: 6px;
 }
-.form-place input[type=email]{
-	height:42px;
-	width: 268px;
-	margin-left:45.5px;
-	margin-top:5px;
-	border-radius:4px;
-	font-size: 14px;
-	font-family: 微软雅黑，Arial;
-	font-weight: 100;
-	line-height: 40px;
-	text-indent: 6px;
-}
+
 .checkspan{
 	display: block;
 	background-repeat: no-repeat;
@@ -63,7 +41,7 @@
 
 }
 .form-place input[type=checkbox]:checked+label{
-	background-position: 0px 0px;
+	background-position: 0px 0px ;
 
 }
 
@@ -100,6 +78,14 @@
 	height:55px;
 	float: left;
 }
+.form-place .cpassword-div{
+	background-image: url(../../img/user/input-all.png);
+	background-position: -325px 0px;
+	width:325px;
+	height:55px;
+	float: left;
+
+}
 .form-place .code-div{
 	background-image: url(../../img/user/input-all.png);
 	background-position: -975px 0px;
@@ -109,9 +95,6 @@
 	float: left;
 }
 
-.form-place .code-div input{
-	width:128px;
-}
 
 .button-raised.button-caution{
 	background: #f7c9ac;
@@ -130,4 +113,7 @@
 	background: #f7c9ac;
 	border-color:#f7c9ac;
 	color:white;
+}
+.form-place .code-div input{
+	width:128px;
 }
