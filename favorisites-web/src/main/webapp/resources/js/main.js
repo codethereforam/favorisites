@@ -1,7 +1,6 @@
 var functions = {};
 functions.temppassword = "";
 functions.buttonflag = false;
-functions.cursorPosition = [0,0];
 functions.oFormplace = document.getElementById("formplace");
 functions.oErrorinfo = document.getElementById("error-info");
 functions.oErrorbox = document.getElementById("error-box");
@@ -60,7 +59,7 @@ functions.showErrorbox = function(obj){
     console.log(tempTop);
     console.log(tempLeft);
     functions.oErrorbox.style['left'] = tempLeft+320+"px";
-    functions.oErrorbox.style['top'] = tempTop+3+"px";
+    functions.oErrorbox.style['top'] = tempTop+2+"px";
     functions.oErrorbox.style['display'] = "block";
     functions.oErrorinfo.style['display'] = "block";
 }
