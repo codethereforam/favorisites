@@ -27,7 +27,7 @@
 
         <div class="paper-content">
             <header class="paper-header">Account Register</header>
-            <form ng-submit="register">
+            <form ng-submit="register" ng-controller="formController">
                 <ul class="form-place col-md-12" id="formplace">
                     <li style="margin-top:25px">
                         <div class="user-div">
@@ -75,8 +75,9 @@
                     <li>
                         <div class="email-div">
                             <input id="emailinput" name="email" inptype="1" type="text"
-                             ng-model="email" placeholder="邮箱：请输入你的邮箱地址">
-                            <button class="butt" ng-disabled="isDisable" ng-click="getCode" id="codebutton" type="button">{{codebuttonText}}</button>
+                                   ng-blur="check_mail_exist(emailValue)"
+                             ng-model="emailValue" placeholder="邮箱：请输入你的邮箱地址">
+                            <button class="butt" ng-disabled="sendIsable" ng-click="getCode()" id="emailbutton" type="button">{{text}}</button>
                         </div>
                         <span class=""></span>
                     </li>
@@ -85,11 +86,7 @@
                         <div class="code-div">
                             <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码" ng-model="code">
                         </div>
-
-                        <button type="button" ng-disabled="true">
-                            <button class="butt" ng-disabled="isDisable" id="submitbutton" type="submit">注册</button>
-                        </button>
-
+                        <button class="butt" ng-disabled="submitIsable" id="submitbutton" type="submit">注册</button>
                     </li>
                 </ul>
             </form>
