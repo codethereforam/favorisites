@@ -15,48 +15,32 @@
 
     </style>
 </head>
-<body>
+<body ng-app="loginApp">
 	<!-- **********用户浏览器版本<=IE8**********-->
     <!--[if lte IE8]>
     <p>浏览器版本太低，请<a tagert="_blank" href="http://www.browsehappy.com">升级</a>为最新的ie浏览器！</p>
     <![endif]-->
-	
-	<!--
-    	作者：806551840@qq.com
-    	时间：2017-11-02
-    	描述：整个页面的容器 .ct-container
-    -->
-    <div class="ct-container" class="col-md-12">
-    	<!--
-        	作者：806551840@qq.com
-        	时间：2017-11-02
-        	描述：三个页面的头部 .share-header
-        -->
+    <div class="ct-container" class="col-md-12" ng-controller="MainController">
     	<header class="share-header col-md-12">
-    		
     	</header>
-    	<!--
-        	作者：806551840@qq.com
-        	时间：2017-11-02
-        	描述：注册登录页面的主体 .register-login-content
-        -->
         <div class="register-login-content col-md-12">
-        	
             <div class="paper-content">
                 <header class="paper-header">Accout Login</header>
-                <form action="" method="post">
+                <form action="" method="post" ng-controller="formController">
                     <ul class="form-place col-md-12" id="formplace">
                         <li style="margin-top:25px">
-                        	<div class="user-div"><input name="username" id="userinput" type="text" value="" placeholder="用户名：5~15个字符"></div>
+                        	<div class="user-div"><input name="username" id="userinput" type="text" value=""
+                                                         ng-model="user.usernameValue" placeholder="用户名：5~15个字符"></div>
                         	<span class=""></span>
                         </li>
                         <li>
-                        	<div class="password-div"><input name="password" id="passwordinput" type="password" value="" placeholder="密码：6~16个字符"></div>
+                        	<div class="password-div"><input name="password" id="passwordinput" type="password"
+                                                         ng-model="user.passwordValue" value="" placeholder="密码：6~16个字符"></div>
                         	<span class=""></span>
                         </li>
                         <li>
                             <div class="code-div">
-                                <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码">
+                                <input name="code" inptype="1" type="text" id="codeinput" ng-model="user.codeValue" placeholder="验证码">
                             </div>
                             <div class="code-image">
                                 <img src="" alt="">
@@ -72,7 +56,7 @@
                         </li>
 
                         <li class="alert-box">
-                            <input type="checkbox" checked="checked" name="check" id="checkbox"><label for="checkbox"></label>
+                            <input type="checkbox" checked="checked" name="check" id="checkbox" ng-model="user.checkValue"><label for="checkbox"></label>
                             <p>记住密码</p>
                             <a href="#">forget password</a>
                         </li>
