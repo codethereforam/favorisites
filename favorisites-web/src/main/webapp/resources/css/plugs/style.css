@@ -8,8 +8,9 @@
 	font-size: 14px;
 	font-family: 微软雅黑，Arial;
 	font-weight: 100;
-	line-height: 40px;
+	line-height: 42px;
 	text-indent: 6px;
+	border:0px;
 }
 
 .checkspan{

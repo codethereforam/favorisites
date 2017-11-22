@@ -11,16 +11,13 @@ window.onload = function(){
             var thisValue = this.value ;
             if( thisValue== null || thisValue.replace(" ","").length == 0 || thisValue.indexOf(" ") != "-1"){
                 functions.doWrongfunction(this,"用户名不能为空，或者带有空格");
-                console.log(01);
             }else if(thisValue.length < 5 || thisValue.length > 15){
                 functions.doWrongfunction(this,"用户名字符长度应为闭区间 [5-15]");
-                console.log(02);
             }else if(  /^[0-9a-zA-Z\u4e00-\u9fa5_]{5,15}$/.test(thisValue) == false  ){
                 functions.doWrongfunction(this,"只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");
-                console.log(03);
             }else if( functions.matchMysql(this,thisValue) == false){
-                functions.doWrongfunction(this,"真抱歉！这个ID太抢手已经被人先注册啦，换一个试试吧");
-                console.log(04);
+                functions.doWrongfunction(this,"你还没有注册");
+
             }else{
                 functions.doRightfunction(this,"usernameSuccess");
             }
@@ -38,13 +35,10 @@ window.onload = function(){
             var thisValue = this.value ;
             if( thisValue== null || thisValue.replace(" ","").length == 0 || thisValue.indexOf(" ") != "-1"){
                 functions.doWrongfunction(this,"密码不能为空或者全为空格");
-                console.log(11);
             }else if(thisValue.length < 6 || thisValue.length > 16){
                 functions.doWrongfunction(this,"密码字符长度应为闭区间 [6-16] ");
-                console.log(12);
             }else if(  /^[0-9a-zA-Z\u4e00-\u9fa5_]{6,16}$/.test(thisValue) == false  ){
                 functions.doWrongfunction(this,"只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");
-                console.log(13);
                 //这个正则表达式有为题，需要修改
             }else{
                 functions.temppassword = thisValue;
@@ -66,9 +60,8 @@ window.onload = function(){
             var thisValue = this.value ;
             if( thisValue== null || thisValue.replace(" ","").length == 0){
                 functions.doWrongfunction(this,"验证码不能为空或者含有空格");
-                console.log(51);
-            }else if(thisValue.length != 6){
-                functions.doWrongfunction(this,"验证码长度应该为6位");
+            }else if(thisValue.length != 4){
+                functions.doWrongfunction(this,"验证码长度应该为4位");
             }else if( /^[0-9a-zA-Z]+$/ .test(thisValue) == false){
                 functions.doWrongfunction(this,"验证码只能是英文或者数字");
             }else{
@@ -78,17 +71,8 @@ window.onload = function(){
             // 验证码错误，请检查邮箱地址或点击重新发送 ,这个是发送之后才会判断的
         }
     }
-    functions.buttonsJudge = function(){
-        if(functions.buttonflag == false){
-            document.getElementById("submitbutton").disabled = true;
-        }else {
-            document.getElementById("submitbutton").disabled = false;
-        }
-        console.log(document.getElementById("submitbutton").disabled);
-    }
     functions.userJudge();
     functions.passwordJudge();
     functions.codeJudge();
-    functions.buttonsJudge();
 
 }

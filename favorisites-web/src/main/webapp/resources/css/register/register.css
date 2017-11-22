@@ -74,17 +74,22 @@
 }
 #emailinput{
     width:203px;
+    height:42px;
+    float: left;
 }
-#codebutton{
-    height:43px;
-    width:60px;
+#emailbutton{
+    height:42px;
+    line-height: 40px;
+    width:66px;
     margin-top:5px;
-    margin-left:1px;
+    font-size:14px;
+    overflow: hidden;
+    box-shadow:0px 0px 0px ;
 }
 #submitbutton{
     height:44px;
     width:115px;
     margin-top:4px;
-    margin-left:0px;
+    margin-left:20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3) !important;
 }

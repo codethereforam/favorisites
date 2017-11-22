@@ -21,7 +21,7 @@ body{
     position: static;
 }
 
-input{
+input,button{
     outline:none;
     border:0px;
     padding: 0px;
@@ -46,3 +46,4 @@ a:hover{
     font-family: LeckerliOne;
     src: url('../../fonts/LeckerliOne.ttf');
 }
+
