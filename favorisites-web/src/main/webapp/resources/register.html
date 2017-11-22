@@ -27,26 +27,26 @@
 
         <div class="paper-content">
             <header class="paper-header">Account Register</header>
-            <form ng-submit="register" ng-controller="formController">
+            <form ng-controller="formController" ng-submit="register()">
                 <ul class="form-place col-md-12" id="formplace">
                     <li style="margin-top:25px">
                         <div class="user-div">
-                            <input name="username" inptype="1" id="userinput" type="text" ng-model="username"
-                                   placeholder="用户名：5~15个字符，不能有空格">
+                            <input name="username" inptype="1" id="userinput" type="text" ng-model="user.usernameValue"
+                                  ng-blur="check_username_exist()" placeholder="用户名：5~15个字符，不能有空格">
                         </div>
                         <span class=""></span>
                     </li>
                     <li>
                         <div class="password-div">
                             <input name="password" inptype="1" id="passwordinput" type="password"
-                            ng-model="password" placeholder="密码：6~16个字符，首尾不能有空格">
+                            ng-model="user.passwordValue" placeholder="密码：6~16个字符，首尾不能有空格">
                         </div>
                         <span class=""></span>
                     </li>
                     <li>
                         <div class="cpassword-div">
                             <input name="cpassword" inptype="1" id="cpasswordinput"
-                            ng-model="cpassword" type="password" placeholder="确认密码：请重复你的密码">
+                            ng-model="user.cpasswordValue" type="password" placeholder="确认密码：请重复你的密码">
                         </div>
                         <span class=""></span>
                     </li>
@@ -55,18 +55,19 @@
                         <!--style="background-image: url('image/user/sex.png');border-radius: 2px;float: left;">-->
                         <div class="sex-div" style="margin-left:20px;">
                             <span class="sex-logo" index="1" style=""></span>
-                            <input name="sex" class="sex-radio" id="sex-female" type="radio" checked="checked"
-                                   value="female"/>
+                            <input name="sex" class="sex-radio" id="sex-female" type="radio"
+                                ng-model="user.sexValue" value="0"/>
                             <label name="female" class="" for="sex-female"></label>
                         </div>
                         <div class="sex-div">
                             <span class="sex-logo" index="2"></span>
-                            <input name="sex" class="sex-radio" id="sex-male" type="radio" value="male"/>
+                            <input name="sex" class="sex-radio" id="sex-male" type="radio"  ng-model="user.sexValue" value="1"/>
                             <label name="male" class="" for="sex-male"></label>
                         </div>
                         <div class="sex-div">
                             <span class="sex-logo" index="3"></span>
-                            <input name="sex" class="sex-radio" id="sex-secret" type="radio" value="secret"/>
+                            <input name="sex" class="sex-radio" id="sex-secret" type="radio"
+                            checked="checked" ng-model="user.sexValue" value="2"/>
                             <label name="secret" class="" for="sex-secret"></label>
                         </div>
 
@@ -74,9 +75,8 @@
 
                     <li>
                         <div class="email-div">
-                            <input id="emailinput" name="email" inptype="1" type="text"
-                                   ng-blur="check_mail_exist(emailValue)"
-                             ng-model="emailValue" placeholder="邮箱：请输入你的邮箱地址">
+                            <input id="emailinput" name="email" inptype="1" type="text" ng-blur="check_email_exist()"
+                             ng-model="user.emailValue" placeholder="邮箱：请输入你的邮箱地址">
                             <button class="butt" ng-disabled="sendIsable" ng-click="getCode()" id="emailbutton" type="button">{{text}}</button>
                         </div>
                         <span class=""></span>
@@ -84,7 +84,7 @@
 
                     <li>
                         <div class="code-div">
-                            <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码" ng-model="code">
+                            <input name="code" inptype="1" type="text" id="codeinput" placeholder="验证码" ng-model="user.codeValue">
                         </div>
                         <button class="butt" ng-disabled="submitIsable" id="submitbutton" type="submit">注册</button>
                     </li>

@@ -31,7 +31,11 @@
 	margin-left: 34px;
 	border-radius: 4px;
 }
-
+.code-image > img{
+	hieght:44px !important;
+	width: 100px !important;
+	display: block !important;
+}
 .alert-box input{
 	visibility: hidden;
 }

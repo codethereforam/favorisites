@@ -47,19 +47,20 @@ functions.resetOutline = function(obj){
 functions.putErrormessage = function(str){
     functions.oErrorinfo.innerHTML = str;
 }
-functions.showErrorbox = function(obj){
-    var tempLeft = 0;
-    var tempTop = 0;
 
+functions.getPosition = function(obj){
+    functions.tempLeft = 0;
+    functions.tempTop = 0;
     while ( obj != undefined) {//等效 obj = obj.offsetParent;while (obj != undefined)
-        tempLeft += obj.offsetLeft; //叠加父容器的上边距
-        tempTop += obj.offsetTop; //叠加父容器的左边距
+        functions.tempLeft += obj.offsetLeft; //叠加父容器的上边距
+        functions.tempTop += obj.offsetTop; //叠加父容器的左边距
         obj = obj.offsetParent;
     }
-    console.log(tempTop);
-    console.log(tempLeft);
-    functions.oErrorbox.style['left'] = tempLeft+320+"px";
-    functions.oErrorbox.style['top'] = tempTop+2+"px";
+}
+functions.showErrorbox = function(obj){
+    functions.getPosition(obj);
+    functions.oErrorbox.style['left'] = functions.tempLeft+320+"px";
+    functions.oErrorbox.style['top'] = functions.tempTop+2+"px";
     functions.oErrorbox.style['display'] = "block";
     functions.oErrorinfo.style['display'] = "block";
 }
@@ -83,7 +84,6 @@ functions.blurInputback =function(obj,str){
     obj.parentNode.style['background-position'] = str;
 }
 functions.doRightfunction = function(obj,str){
-    functions.buttonflag = true;
     functions.showRightspan(obj);
     functions.resetOutline(obj);
     functions.hideErrorbox(obj);
@@ -91,7 +91,6 @@ functions.doRightfunction = function(obj,str){
     console.log(str);
 }
 functions.doWrongfunction = function(obj,str){
-    functions.buttonflag = false;
     functions.showWrongspan(obj);
     functions.changeOutline(obj);
     functions.putErrormessage(str);

@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="css/plugs/buttons.css">
     <link rel="stylesheet" href="css/plugs/style.css">
     <link rel="stylesheet" href="css/login/login.css">
-
-    <style>
-
-    </style>
+    <script src="common/angular.min.js"></script>
+    <script src="angularjs/loginApp.js"></script>
 </head>
 <body ng-app="loginApp">
 	<!-- **********用户浏览器版本<=IE8**********-->
@@ -26,28 +24,31 @@
         <div class="register-login-content col-md-12">
             <div class="paper-content">
                 <header class="paper-header">Accout Login</header>
-                <form action="" method="post" ng-controller="formController">
+                <form  ng-controller="formController">
                     <ul class="form-place col-md-12" id="formplace">
                         <li style="margin-top:25px">
-                        	<div class="user-div"><input name="username" id="userinput" type="text" value=""
-                                                         ng-model="user.usernameValue" placeholder="用户名：5~15个字符"></div>
+                        	<div class="user-div">
+                                <input name="username" id="userinput" type="text" value=""
+                                inptype="1" ng-model="user.usernameValue" placeholder="用户名：5~15个字符"></div>
                         	<span class=""></span>
                         </li>
                         <li>
-                        	<div class="password-div"><input name="password" id="passwordinput" type="password"
-                                                         ng-model="user.passwordValue" value="" placeholder="密码：6~16个字符"></div>
+                        	<div class="password-div">
+                                <input name="password" id="passwordinput" type="password"
+                                inptype="1" ng-model="user.passwordValue" value="" placeholder="密码：6~16个字符"></div>
                         	<span class=""></span>
                         </li>
                         <li>
                             <div class="code-div">
                                 <input name="code" inptype="1" type="text" id="codeinput" ng-model="user.codeValue" placeholder="验证码">
                             </div>
-                            <div class="code-image">
-                                <img src="" alt="">
+                            <div class="code-image" ng-click="refreshCaptcha()">
+                                <img  ng-src="{{captchaUrl}}" style="height:44px;width:100px;display: block;" alt="点击更换">
                             </div>
                         </li>
                         <li>
-                            <button type="button" disabled="false" class="button button-caution button-box button-raised button-giant" id="submitbutton">
+                            <button type="button" ng-click="login()"
+                                    class="button button-caution button-box button-raised button-giant" id="submitbutton">
                                 <i class="fa">submit</i>
                             </button>
                             <button type="reset"  class="button button-caution button-box button-raised button-giant" id="resetbutton">
@@ -56,7 +57,8 @@
                         </li>
 
                         <li class="alert-box">
-                            <input type="checkbox" checked="checked" name="check" id="checkbox" ng-model="user.checkValue"><label for="checkbox"></label>
+                            <input type="checkbox"  ng-true-value="1" ng-false-value="0" name="check" id="checkbox" ng-model="user.checkValue">
+                            <label for="checkbox"></label>
                             <p>记住密码</p>
                             <a href="#">forget password</a>
                         </li>
