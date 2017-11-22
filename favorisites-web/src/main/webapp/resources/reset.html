@@ -41,11 +41,8 @@
 
         <div class="paper-content">
             <header class="paper-header">Input Info</header>
-
-
-
-            <form ng-if="formIf[2]" action="" method="post">
-                <ul class="form-place col-md-12" id="formplace">
+            <form ng-controller="formController">
+                <ul ng-if="formIf[0]" class="form-place col-md-12" id="formplace">
                     <li style="margin-top:25px;">
                         <h2>第一步：</h2>
                     </li>
@@ -77,10 +74,7 @@
                         </button>
                     </li>
                 </ul>
-            </form>
-
-            <form ng-if="formIf[1]" action="" method="post">
-                <ul class="form-place col-md-12" id="formplace">
+                <ul ng-if="formIf[1]" class="form-place col-md-12" id="formplace">
                     <li style="margin-top:25px;">
                         <h2>第二步：</h2>
                     </li>
@@ -98,22 +92,14 @@
                         </button>
                     </li>
                 </ul>
-            </form>
-
-            <form ng-if="formIf[0]" action="" method="post">
-                <ul class="form-place col-md-12" id="formplace">
+                <ul ng-if="formIf[2]" class="form-place col-md-12" id="formplace">
                     <li style="margin-top:100px;">
                         <h2>恭喜您，修改成功！</h2>
                         <h2>正在跳转.......</h2>
                     </li>
-
                 </ul>
             </form>
-
-
-
         </div>
-
     </div>
 
     <!--
