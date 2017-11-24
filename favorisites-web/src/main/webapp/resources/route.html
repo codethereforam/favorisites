@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到favorisites收藏夹网站</title>
+    <link rel="icon" href="data:;base64,=">
+    <script src="common/angular.min.js"></script>
+</head>
+<body ng-app="routeApp">
+<h1 ng-controller="MainController">正在跳转</h1>
+</body>
+</html>
+<script>
+    (function(angular){
+        var routeApp = angular.module('routeApp', []);
+        routeApp.controller('MainController',['$scope','$http','$location',
+            function($scope,$http,$location){
+            $http({
+                        method:'get',
+                        url:'/sessions/user',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    }).then(function(response){
+                        console.log(response.data);
+                        $scope.user = response.data;
+                    },function(response){
+                        console.log(response.data);
+            });
+            console.log($scope.user);
+
+
+        }]);
+    })(angular);
+</script>
