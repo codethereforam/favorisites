@@ -1,0 +1,56 @@
+.form-place .email-div{
+    background-image: url(../../img/user/input-all.png);
+    background-position: -650px 0px;
+    width:325px;
+    height:55px;
+    float: left;
+}
+.paper-content{
+    top:40%;
+    margin-top:-190px;
+    height:470px;
+}
+.form-place{
+    height:362px;
+}
+
+#emailinput{
+    width:203px;
+}
+#codebutton{
+    height:42px;
+    width:60px;
+    margin-top:0px;
+    margin-left:0px;
+    border-radius: 0px 4px 4px 0px;
+}
+#submitbutton{
+    height:44px;
+    width:313px;
+    margin-top:4px;
+    margin-left:2px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3) !important;
+}
+#resetbutton{
+    height:44px;
+    width:100px;
+    margin-top:4px;
+    margin-left:17px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3) !important;
+}
+.code-image{
+    height:44px;
+    width:100px;
+    background-color: white;
+    float: left;
+    margin-top:4px;
+    margin-left: 34px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+#emailcodebutton{
+    margin-left: 15px;
+    margin-top:6px;
+    width:120px;
+
+}

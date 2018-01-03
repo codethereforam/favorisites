@@ -1,0 +1,22 @@
+.butt{
+    border:0;
+    padding:0;
+    display: inline-block;
+    height:44px;
+    background-color:#f7c9ac;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    line-height: 44px;
+    color:white;
+    font-size: 16px;
+    font-weight: 300;
+    font-family:Helvetica,Arial;
+    cursor:pointer;
+}
+.butt:hover{
+    background-color:#f7c3ad;
+}
+.butt:disabled{
+    color:#ccc;
+    background-color:#EEE;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 拦截器 -->
+<!--    <mvc:interceptors>
+        &lt;!&ndash; 获取登录信息 &ndash;&gt;
+        <mvc:interceptor>
+            <mvc:mapping path="/manage/**"/>
+            <bean class="com.zheng.upms.server.interceptor.UpmsInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+    <!--  don't handle the static resource  -->
+    <!--<mvc:default-servlet-handler/>-->
+
+    <!-- 配置静态资源，不被DispatcherServlet处理-->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <mvc:resources mapping="/swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/**" location="/resources/"/>
+
+
+</beans>
