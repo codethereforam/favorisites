@@ -21,6 +21,13 @@
 	margin-left:16px;
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) !important;
 }
+#forgetPwdBtn{
+    height:44px;
+    width:93px;
+    margin-top:4px;
+    margin-left:2px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3) !important;
+}
 .code-image{
 	height:44px;
 	width:100px;
