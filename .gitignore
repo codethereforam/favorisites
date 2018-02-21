@@ -1,7 +1,6 @@
 .idea
 *.iml
 generatorConfig.xml
-jdbc-config.properties
 out
 gen
 .classpath
