@@ -137,6 +137,7 @@ public class LoginController {
 		// create the text for the image
 		String capText = captchaProducer.createText();
 		// store the text in the session
+		logger.debug("generate captcha: " + capText);
 		session.setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
 		// create the image with the text
 		BufferedImage bi = captchaProducer.createImage(capText);

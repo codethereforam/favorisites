@@ -104,3 +104,9 @@ login-controller : 登录管理
                   "password": "123456789",
                   "confirmedPassword": "123456789"
                 }
+    退出登录
+        1.退出登录
+            请求：
+                delete /sessions
+            结果：
+                成功

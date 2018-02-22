@@ -135,7 +135,7 @@ window.onload = function(){
             // 验证码错误，请检查邮箱地址或点击重新发送 ,这个是发送之后才会判断的
         }
     }
-    functions.buttonsJudge = function(){
+   /* functions.buttonsJudge = function(){
             if(functions.buttonflag == false){
                     document.getElementById("submitbutton").disabled = true;
                     document.getElementById("codebutton").disabled = true;
@@ -144,7 +144,7 @@ window.onload = function(){
                 document.getElementById("codebutton").disabled = false;
             }
         console.log(document.getElementById("submitbutton").disabled);
-    }
+    }*/
 	functions.userJudge();
     functions.passwordJudge();
     functions.cpasswordJudge();

@@ -1,6 +1,5 @@
 var functions = {};
 functions.temppassword = "";
-functions.buttonflag = false;
 functions.oFormplace = document.getElementById("formplace");
 functions.oErrorinfo = document.getElementById("error-info");
 functions.oErrorbox = document.getElementById("error-box");
@@ -88,7 +87,6 @@ functions.blurInputback = function (obj, str) {
     obj.parentNode.style['background-position'] = str;
 };
 functions.doRightfunction = function (obj, str) {
-    functions.buttonflag = true;
     functions.showRightspan(obj);
     functions.resetOutline(obj);
     functions.hideErrorbox(obj);
@@ -96,7 +94,6 @@ functions.doRightfunction = function (obj, str) {
     console.log(str);
 };
 functions.doWrongfunction = function (obj, str) {
-    functions.buttonflag = false;
     functions.showWrongspan(obj);
     functions.changeOutline(obj);
     functions.putErrormessage(str);
