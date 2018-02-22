@@ -6,15 +6,14 @@ functions.oErrorinfo = document.getElementById("error-info");
 functions.oErrorbox = document.getElementById("error-box");
 functions.aInputs = functions.oFormplace.getElementsByTagName("input");
 
-functions.isEmail = function (strEmail) {
+functions.checkEmail = function (strEmail) {
     //声明邮箱正则
-    var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    if (!myreg.test(strEmail))//对输入的值进行判断
-    {
-        console.log("fail");
+    var emailRegex = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if (!emailRegex.test(strEmail)) {
+        console.log("invalid email");
         return false;
     }
-    // return true;
+    return true;
 };
 
 functions.showRightspan = function (obj) {

@@ -1,6 +1,6 @@
 window.onload = function () {
     var usernameRight = false;
-    var passwordRignt = false;
+    var passwordRight = false;
     var captchaRight = false;
 
     functions.userJudge = function () {
@@ -15,21 +15,25 @@ window.onload = function () {
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(" ", "").length == 0 || thisValue.indexOf(" ") != "-1") {
                 functions.doWrongfunction(this, "用户名不能为空，或者带有空格");
+                usernameRight = false;
                 console.log(01);
             } else if (thisValue.length < 5 || thisValue.length > 15) {
                 functions.doWrongfunction(this, "用户名字符长度应为闭区间 [5-15]");
+                usernameRight = false;
                 console.log(02);
             } else if (/^[0-9a-zA-Z\u4e00-\u9fa5_]{5,15}$/.test(thisValue) == false) {
-                functions.doWrongfunction(this, "只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");
+                functions.doWrongfunction(this, "只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");                usernameRight = false;
+                usernameRight = false;
                 console.log(03);
             } else if (functions.matchMysql(this, thisValue) == false) {
-                functions.doWrongfunction(this, "真抱歉！这个ID太抢手已经被人先注册啦，换一个试试吧");
+                functions.doWrongfunction(this, "真抱歉！这个ID太抢手已经被人先注册啦，换一个试试吧");                usernameRight = false;
+                usernameRight = false;
                 console.log(04);
             } else {
                 functions.doRightfunction(this, "usernameSuccess");
                 usernameRight = true;
-                functions.buttonsJudge();
             }
+            functions.buttonsJudge();
         }
     };
 
@@ -45,21 +49,24 @@ window.onload = function () {
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(" ", "").length == 0 || thisValue.indexOf(" ") != "-1") {
                 functions.doWrongfunction(this, "密码不能为空或者全为空格");
+                passwordRight = false;
                 console.log(11);
             } else if (thisValue.length < 6 || thisValue.length > 16) {
                 functions.doWrongfunction(this, "密码字符长度应为闭区间 [6-16] ");
+                passwordRight = false;
                 console.log(12);
             } else if (/^[0-9a-zA-Z\u4e00-\u9fa5_]{6,16}$/.test(thisValue) == false) {
                 functions.doWrongfunction(this, "只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");
+                passwordRight = false;
                 console.log(13);
                 //这个正则表达式有为题，需要修改
             } else {
                 functions.temppassword = thisValue;
                 functions.doRightfunction(this, "passwordSuccess");
                 functions.doRightfunction(functions.aInputs[2], "cpasswordSuccess");
-                passwordRignt = true;
-                functions.buttonsJudge();
+                passwordRight = true;
             }
+            functions.buttonsJudge();
         }
     };
 
@@ -75,25 +82,27 @@ window.onload = function () {
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(" ", "").length == 0) {
                 functions.doWrongfunction(this, "验证码不能为空或者含有空格");
+                captchaRight = false;
                 console.log(51);
             } else if (thisValue.length != 4) {
                 functions.doWrongfunction(this, "验证码长度应该为4位");
+                captchaRight = false;
             } else if (/^[0-9a-zA-Z]+$/.test(thisValue) == false) {
                 functions.doWrongfunction(this, "验证码只能是英文或者数字");
+                captchaRight = false;
             } else {
                 functions.doRightfunction(this, "codeSuccess");
                 captchaRight = true;
-                functions.buttonsJudge();
             }
+            functions.buttonsJudge();
         }
     };
+
     functions.buttonsJudge = function () {
-       if(usernameRight && passwordRignt && captchaRight) {
-           document.getElementById("submitbutton").disabled = false;
-       }
+        document.getElementById("submitbutton").disabled = !(usernameRight && passwordRight && captchaRight);
     };
+
     functions.userJudge();
     functions.passwordJudge();
     functions.codeJudge();
-    functions.buttonsJudge();
 };

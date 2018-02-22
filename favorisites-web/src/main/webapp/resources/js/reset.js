@@ -43,7 +43,7 @@ window.onload = function(){
             }else if(thisValue.length > 50){
                 functions.doWrongfunction(this,"邮箱的长度不能超过50");
                 console.log(42);
-            }else if(functions.isEmail(thisValue) == false){
+            }else if(functions.checkEmail(thisValue) == false){
                 functions.doWrongfunction(this,"输入的邮箱格式不正确");
                 console.log(43);
             }else if(functions.matchMysql(this,thisValue) == false ){
