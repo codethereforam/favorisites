@@ -35,7 +35,7 @@
                                 }
                                 var element = document.getElementById(error.field);
                                 console.debug(element);
-                                functions.doWrongfunction(element, error.errorMsg);
+                                functions.showWrongSpanAndMessage(element, error.errorMsg);
                                 $scope.updateCaptcha();
                                 document.getElementById("captcha").value = "";
                                 captchaValid = false;

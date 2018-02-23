@@ -16,7 +16,7 @@ functions.checkEmail = function (strEmail) {
     return true;
 };
 
-functions.showRightspan = function (obj) {
+functions.showRightSpanSimply = function (obj) {
     var oSpan = obj.parentNode.parentNode.getElementsByTagName("span")[0];
     if (oSpan) {
         oSpan.className = "checkspan checkright";
@@ -30,7 +30,7 @@ functions.showWrongspan = function (obj) {
     }
 };
 
-functions.hideCheckspan = function (obj) {
+functions.hideCheckSpan = function (obj) {
     var oSpan = obj.parentNode.parentNode.getElementsByTagName("span")[0];
     if (oSpan) {
         oSpan.className = "";
@@ -47,11 +47,11 @@ functions.resetOutline = function (obj) {
     obj.style['box-shadow'] = "none";
 };
 
-functions.putErrormessage = function (str) {
+functions.putErrorMessage = function (str) {
     functions.oErrorinfo.innerHTML = str;
 };
 
-functions.showErrorbox = function (obj) {
+functions.showErrorBox = function (obj) {
     var tempLeft = 0;
     var tempTop = 0;
 
@@ -68,30 +68,36 @@ functions.showErrorbox = function (obj) {
     functions.oErrorinfo.style['display'] = "block";
 };
 
-functions.hideErrorbox = function () {
+functions.hideErrorBox = function () {
     functions.oErrorbox.style['display'] = "none";
     functions.oErrorinfo.style['display'] = "none";
 };
 
-functions.focusInputback = function (obj, str) {
+functions.focusInputBack = function (obj, str) {
     obj.parentNode.style['background-position'] = str;
 
 };
 
-functions.blurInputback = function (obj, str) {
+functions.blurInputBack = function (obj, str) {
     obj.parentNode.style['background-position'] = str;
 };
 
-functions.doRightfunction = function (obj, str) {
-    functions.showRightspan(obj);
+functions.showRightSpan = function (obj) {
+    functions.showRightSpanSimply(obj);
     functions.resetOutline(obj);
-    functions.hideErrorbox(obj);
-    console.log(str);
+    functions.hideErrorBox(obj);
 };
 
-functions.doWrongfunction = function (obj, str) {
+functions.showRightSpanAndMessage = function (obj, str) {
+    functions.showRightSpanSimply(obj);
+    functions.changeOutline(obj);
+    functions.putErrorMessage(str);
+    functions.showErrorBox(obj);
+};
+
+functions.showWrongSpanAndMessage = function (obj, str) {
     functions.showWrongspan(obj);
     functions.changeOutline(obj);
-    functions.putErrormessage(str);
-    functions.showErrorbox(obj);
+    functions.putErrorMessage(str);
+    functions.showErrorBox(obj);
 };

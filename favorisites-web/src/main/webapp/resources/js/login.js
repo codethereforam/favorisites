@@ -10,18 +10,18 @@ window.onload = function () {
     functions.userJudge = function () {
         var oUserinput = document.getElementById("accountName");
         oUserinput.onfocus = function () {
-            functions.focusInputback(this, "0px -55px");
+            functions.focusInputBack(this, "0px -55px");
             functions.resetOutline(this);
-            functions.hideCheckspan(this);
+            functions.hideCheckSpan(this);
         };
         oUserinput.onblur = function () {
-            functions.blurInputback(this, "0px 0px");
+            functions.blurInputBack(this, "0px 0px");
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
-                functions.doWrongfunction(this, "请填写账户名");
+                functions.showWrongSpanAndMessage(this, "请填写账户名");
                 usernameValid = false;
             } else {
-                functions.doRightfunction(this, "usernameSuccess");
+                functions.showRightSpan(this);
                 usernameValid = true;
             }
             checkLoginButton();
@@ -31,20 +31,20 @@ window.onload = function () {
     functions.passwordJudge = function () {
         var oPasswordinput = document.getElementById("password");
         oPasswordinput.onfocus = function () {
-            functions.focusInputback(this, "-325px -55px");
+            functions.focusInputBack(this, "-325px -55px");
             functions.resetOutline(this);
-            functions.hideCheckspan(this);
+            functions.hideCheckSpan(this);
         };
         oPasswordinput.onblur = function () {
-            functions.focusInputback(this, "-325px 0px");
+            functions.focusInputBack(this, "-325px 0px");
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
-                functions.doWrongfunction(this, "请输入密码");
+                functions.showWrongSpanAndMessage(this, "请输入密码");
                 passwordValid = false;
             } else {
                 functions.temppassword = thisValue;
-                functions.doRightfunction(this, "passwordSuccess");
-                functions.doRightfunction(functions.aInputs[2], "cpasswordSuccess");
+                functions.showRightSpan(this);
+                functions.showRightSpan(functions.aInputs[2]);
                 passwordValid = true;
             }
             checkLoginButton();
@@ -54,22 +54,22 @@ window.onload = function () {
     functions.codeJudge = function () {
         var oCodeinput = document.getElementById("captcha");
         oCodeinput.onfocus = function () {
-            functions.focusInputback(this, "-975px -55px");
+            functions.focusInputBack(this, "-975px -55px");
             functions.resetOutline(this);
-            functions.hideCheckspan(this);
+            functions.hideCheckSpan(this);
         };
 
         oCodeinput.onblur = function () {
-            functions.focusInputback(this, "-975px 0px");
+            functions.focusInputBack(this, "-975px 0px");
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
-                functions.doWrongfunction(this, "请输入验证码");
+                functions.showWrongSpanAndMessage(this, "请输入验证码");
                 captchaValid = false;
             } else if (thisValue.length !== 4) {
-                functions.doWrongfunction(this, "验证码长度应该为4位");
+                functions.showWrongSpanAndMessage(this, "验证码长度应该为4位");
                 captchaValid = false;
             } else {
-                functions.doRightfunction(this, "codeSuccess");
+                functions.showRightSpan(this);
                 captchaValid = true;
             }
             checkLoginButton();
