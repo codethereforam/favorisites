@@ -1,5 +1,6 @@
 var functions = {};
 functions.temppassword = "";
+
 functions.oFormplace = document.getElementById("formplace");
 functions.oErrorinfo = document.getElementById("error-info");
 functions.oErrorbox = document.getElementById("error-box");
@@ -7,7 +8,7 @@ functions.aInputs = functions.oFormplace.getElementsByTagName("input");
 
 functions.checkEmail = function (strEmail) {
     //声明邮箱正则
-    var emailRegex = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    var emailRegex = /^([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     if (!emailRegex.test(strEmail)) {
         console.log("invalid email");
         return false;
@@ -72,27 +73,22 @@ functions.hideErrorbox = function () {
     functions.oErrorinfo.style['display'] = "none";
 };
 
-functions.matchMysql = function (obj, str) {
-
-};
-
-functions.putTojson = function (str) {
-
-};
 functions.focusInputback = function (obj, str) {
     obj.parentNode.style['background-position'] = str;
 
 };
+
 functions.blurInputback = function (obj, str) {
     obj.parentNode.style['background-position'] = str;
 };
+
 functions.doRightfunction = function (obj, str) {
     functions.showRightspan(obj);
     functions.resetOutline(obj);
     functions.hideErrorbox(obj);
-    functions.putTojson(obj.value);
     console.log(str);
 };
+
 functions.doWrongfunction = function (obj, str) {
     functions.showWrongspan(obj);
     functions.changeOutline(obj);

@@ -38,8 +38,8 @@
                                 functions.doWrongfunction(element, error.errorMsg);
                                 $scope.updateCaptcha();
                                 document.getElementById("captcha").value = "";
-                                captchaRight = false;
-                                functions.buttonsJudge();
+                                captchaValid = false;
+                                checkLoginButton();
                             }
                         }
                     }, function (err) {

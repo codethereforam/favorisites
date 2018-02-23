@@ -19,9 +19,6 @@ window.onload = function(){
             }else if(  /^[0-9a-zA-Z\u4e00-\u9fa5_]{5,15}$/.test(thisValue) == false  ){
                 functions.doWrongfunction(this,"只支持英文字母（不区分大小写）、数字和下划线，请不要输入非法字符");
                 console.log(03);
-            }else if( functions.matchMysql(this,thisValue) == false){
-                functions.doWrongfunction(this,"真抱歉！这个ID太抢手已经被人先注册啦，换一个试试吧");
-                console.log(04);
             }else{
                 functions.doRightfunction(this,"usernameSuccess");
             }
@@ -46,9 +43,6 @@ window.onload = function(){
             }else if(functions.checkEmail(thisValue) == false){
                 functions.doWrongfunction(this,"输入的邮箱格式不正确");
                 console.log(43);
-            }else if(functions.matchMysql(this,thisValue) == false ){
-                functions.doWrongfunction(this,"该邮箱已经被注册");
-                console.log(44);
             }else{
                 functions.doRightfunction(this,"emailSuccess");
             }
@@ -89,6 +83,5 @@ window.onload = function(){
     functions.userJudge();
     functions.emailJudge();
     functions.codeJudge();
-    functions.buttonsJudge();
 
 }

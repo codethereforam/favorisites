@@ -1,6 +1,10 @@
-var usernameRight = false;
-var passwordRight = false;
-var captchaRight = false;
+var usernameValid = false;
+var passwordValid = false;
+var captchaValid = false;
+
+function checkLoginButton() {
+    document.getElementById("submitbutton").disabled = !(usernameValid && passwordValid && captchaValid);
+}
 
 window.onload = function () {
     functions.userJudge = function () {
@@ -15,12 +19,12 @@ window.onload = function () {
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
                 functions.doWrongfunction(this, "请填写账户名");
-                usernameRight = false;
+                usernameValid = false;
             } else {
                 functions.doRightfunction(this, "usernameSuccess");
-                usernameRight = true;
+                usernameValid = true;
             }
-            functions.buttonsJudge();
+            checkLoginButton();
         }
     };
 
@@ -36,14 +40,14 @@ window.onload = function () {
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
                 functions.doWrongfunction(this, "请输入密码");
-                passwordRight = false;
+                passwordValid = false;
             } else {
                 functions.temppassword = thisValue;
                 functions.doRightfunction(this, "passwordSuccess");
                 functions.doRightfunction(functions.aInputs[2], "cpasswordSuccess");
-                passwordRight = true;
+                passwordValid = true;
             }
-            functions.buttonsJudge();
+            checkLoginButton();
         }
     };
 
@@ -60,25 +64,21 @@ window.onload = function () {
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
                 functions.doWrongfunction(this, "请输入验证码");
-                captchaRight = false;
+                captchaValid = false;
             } else if (thisValue.length !== 4) {
                 functions.doWrongfunction(this, "验证码长度应该为4位");
-                captchaRight = false;
+                captchaValid = false;
             } else {
                 functions.doRightfunction(this, "codeSuccess");
-                captchaRight = true;
+                captchaValid = true;
             }
-            functions.buttonsJudge();
+            checkLoginButton();
         };
 
         oCodeinput.onkeyup = function () {
-            captchaRight = this.value.length === 4;
-            functions.buttonsJudge();
+            captchaValid = this.value.length === 4;
+            checkLoginButton();
         };
-    };
-
-    functions.buttonsJudge = function () {
-        document.getElementById("submitbutton").disabled = !(usernameRight && passwordRight && captchaRight);
     };
 
     functions.userJudge();
