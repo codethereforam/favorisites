@@ -36,14 +36,14 @@
                     <li>
                         <div class="password-div">
                             <input name="password" id="password" type="password"
-                                   placeholder="密码：6~16个字符，首尾不能有空格">
+                                   placeholder="密码：6~16个字符，首尾不能有空格" ng-model="password">
                         </div>
                         <span class=""></span>
                     </li>
                     <li>
                         <div class="cpassword-div">
                             <input name="cpassword" id="confirmedPassword"
-                                   type="password" placeholder="确认密码：请再次填写密码">
+                                   type="password" placeholder="确认密码：请再次填写密码" ng-model="confirmedPassword">
                         </div>
                         <span class=""></span>
                     </li>
@@ -51,18 +51,18 @@
                         <span class="sex-choice"></span>
                         <div class="sex-div" style="margin-left:20px;">
                             <span class="sex-logo" index="1" style=""></span>
-                            <input name="sex" class="sex-radio" id="sex-female" type="radio" value="female"/>
+                            <input name="sex" class="sex-radio" id="sex-female" type="radio" value="0" ng-model="sex"/>
                             <label for="sex-female"></label>
                         </div>
                         <div class="sex-div">
                             <span class="sex-logo" index="2"></span>
-                            <input name="sex" class="sex-radio" id="sex-male" type="radio" value="male"/>
+                            <input name="sex" class="sex-radio" id="sex-male" type="radio" value="1" ng-model="sex"/>
                             <label for="sex-male"></label>
                         </div>
                         <div class="sex-div">
                             <span class="sex-logo" index="3"></span>
-                            <input name="sex" class="sex-radio" id="sex-secret" type="radio" value="secret"
-                                   checked="checked"/>
+                            <input name="sex" class="sex-radio" id="sex-secret" type="radio" value="2" ng-model="sex"
+                                   checked="checked" ng-checked="true"/>
                             <label for="sex-secret"></label>
                         </div>
                     </li>
@@ -70,7 +70,7 @@
                     <li>
                         <div class="email-div">
                             <input id="email" name="email" type="text" value=""
-`                                   placeholder="邮箱：请输入你的邮箱地址" ng-model="email">
+                                   placeholder="邮箱：请输入你的邮箱地址" ng-model="email">
                             <button type="button" disabled="disabled"
                                     class="button button-caution button-box button-raised button-giant"
                                     id="codebutton" ng-click="sendCaptcha()">
@@ -81,7 +81,7 @@
                     </li>
                     <li>
                         <div class="code-div">
-                            <input name="code" type="text" id="emailCaptcha" placeholder="验证码">
+                            <input name="code" type="text" id="emailCaptcha" placeholder="验证码" ng-model="emailCaptcha">
                         </div>
                         <button type="button" disabled="disabled"
                                 class="button button-caution button-box button-raised button-giant" id="submitbutton"
