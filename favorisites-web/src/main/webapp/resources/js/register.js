@@ -1,4 +1,5 @@
 var usernameValid = false;
+var usernameNotExist = true;
 var passwordValid = false;
 var confirmedPasswordValid = false;
 var emailValid = false;
@@ -9,15 +10,21 @@ function checkEmailSendButton() {
 }
 
 function checkRegisterButton() {
-    console.log(usernameValid +"|"+ passwordValid +"|"+
-        confirmedPasswordValid +"|"+ emailValid +"|"+ emailCaptchaValid);
+    console.log({
+        "usernameValid": usernameValid,
+        "usernameNotExist": usernameNotExist,
+        "passwordValid": passwordValid,
+        "confirmedPasswordValid": confirmedPasswordValid,
+        "emailValid": emailValid,
+        "emailCaptchaValid": emailCaptchaValid
+    });
     document.getElementById("submitbutton").disabled = !(usernameValid && passwordValid &&
-        confirmedPasswordValid && emailValid && emailCaptchaValid);
+        confirmedPasswordValid && emailValid && emailCaptchaValid && usernameNotExist);
 }
 
 window.onload = function () {
     functions.userJudge = function () {
-        var oUserinput = document.getElementById("userinput");
+        var oUserinput = document.getElementById("username");
 
         oUserinput.onfocus = function () {
             functions.focusInputback(this, "0px -55px");
@@ -25,7 +32,7 @@ window.onload = function () {
             functions.hideCheckspan(this);
         };
 
-        oUserinput.onkeyup = oUserinput.onblur = function () {
+        oUserinput.onkeyup = function () {
             functions.blurInputback(this, "0px 0px");
             var thisValue = this.value;
             //非空,不能有空格
@@ -40,17 +47,18 @@ window.onload = function () {
             } else if (/^[0-9a-zA-Z\u4e00-\u9fa5_]{5,15}$/.test(thisValue) === false) {
                 functions.doWrongfunction(this, "用户名仅支持中英文、数字和下划线");
                 usernameValid = false;
-                // 不能与已有用户名重复
             } else {
-                functions.doRightfunction(this, "usernameSuccess");
                 usernameValid = true;
+            }
+            if (usernameValid && usernameNotExist) {
+                functions.doRightfunction(this, "usernameSuccess");
             }
             checkRegisterButton();
         }
     };
 
     functions.passwordJudge = function () {
-        var oPasswordinput = document.getElementById("passwordinput");
+        var oPasswordinput = document.getElementById("password");
 
         oPasswordinput.onfocus = function () {
             functions.focusInputback(this, "-325px -55px");
@@ -90,7 +98,7 @@ window.onload = function () {
     };
 
     functions.cpasswordJudge = function () {
-        var oCpasswordinput = document.getElementById("cpasswordinput");
+        var oCpasswordinput = document.getElementById("confirmedPassword");
 
         oCpasswordinput.onfocus = function () {
             functions.focusInputback(this, "-325px -55px");
@@ -117,7 +125,7 @@ window.onload = function () {
     };
 
     functions.emailJudge = function () {
-        var oEmailinput = document.getElementById("emailinput");
+        var oEmailinput = document.getElementById("email");
 
         oEmailinput.onfocus = function () {
             functions.focusInputback(this, "-650px -55px");
@@ -150,7 +158,7 @@ window.onload = function () {
     };
 
     functions.codeJudge = function () {
-        var oCodeinput = document.getElementById("codeinput");
+        var oCodeinput = document.getElementById("emailCaptcha");
 
         oCodeinput.onfocus = function () {
             functions.focusInputback(this, "-975px -55px");

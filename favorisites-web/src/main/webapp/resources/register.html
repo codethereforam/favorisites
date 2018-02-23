@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" ng-app="registerApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/plugs/style.css">
     <link rel="stylesheet" href="css/register/register.css">
 </head>
-<body>
+<body ng-controller="registerCtrl">
 <!--[if lte IE8]>
 <p>浏览器版本太低，请
     <a target="_blank" href="http://www.browsehappy.com">升级</a>
@@ -27,21 +27,22 @@
                 <ul class="form-place col-md-12" id="formplace">
                     <li style="margin-top:25px">
                         <div class="user-div">
-                            <input name="username" id="userinput" type="text"
-                                   placeholder="用户名：5~15个字符，不能有空格">
+                            <input name="username" id="username" type="text"
+                                   placeholder="用户名：5~15个字符，不能有空格"
+                                   ng-blur="checkUsernameExist()" ng-model="username">
                         </div>
                         <span class=""></span>
                     </li>
                     <li>
                         <div class="password-div">
-                            <input name="password" id="passwordinput" type="password"
+                            <input name="password" id="password" type="password"
                                    placeholder="密码：6~16个字符，首尾不能有空格">
                         </div>
                         <span class=""></span>
                     </li>
                     <li>
                         <div class="cpassword-div">
-                            <input name="cpassword" id="cpasswordinput"
+                            <input name="cpassword" id="confirmedPassword"
                                    type="password" placeholder="确认密码：请再次填写密码">
                         </div>
                         <span class=""></span>
@@ -68,10 +69,11 @@
 
                     <li>
                         <div class="email-div">
-                            <input id="emailinput" name="email" type="text" value=""
+                            <input id="email" name="email" type="text" value=""
                                    placeholder="邮箱：请输入你的邮箱地址">
                             <button type="button" disabled="disabled"
-                                    class="button button-caution button-box button-raised button-giant" id="codebutton">
+                                    class="button button-caution button-box button-raised button-giant"
+                                    id="codebutton" ng-click="sendCaptcha()">
                                 <i class="fa">发送</i>
                             </button>
                         </div>
@@ -79,10 +81,11 @@
                     </li>
                     <li>
                         <div class="code-div">
-                            <input name="code" type="text" id="codeinput" placeholder="验证码">
+                            <input name="code" type="text" id="emailCaptcha" placeholder="验证码">
                         </div>
                         <button type="button" disabled="disabled"
-                                class="button button-caution button-box button-raised button-giant" id="submitbutton">
+                                class="button button-caution button-box button-raised button-giant" id="submitbutton"
+                                ng-click="register()">
                             <i class="fa">注册</i>
                         </button>
 
@@ -99,4 +102,6 @@
 </body>
 <script src="js/main.js"></script>
 <script src="js/register.js"></script>
+<script src="common/angular.js"></script>
+<script src="js/registerApp.js"></script>
 </html>
