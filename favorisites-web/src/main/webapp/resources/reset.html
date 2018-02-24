@@ -60,7 +60,8 @@
                     </li>
                     <li style="margin-top:25px">
                         <div class="user-div">
-                            <input name="username" id="username" type="text" value="111" disabled="disabled">
+                            <input name="username" id="username" type="text" value="111" disabled="disabled"
+                                   ng-model="username">
                         </div>
                         <span class=""></span>
                     </li>
@@ -80,7 +81,7 @@
                     </li>
                     <li>
                         <button type="button" class="button button-caution button-box button-raised button-giant"
-                                id="submitbutton">
+                                id="submitbutton" ng-click="resetPassword()">
                             <i class="fa">重置</i>
                         </button>
                     </li>

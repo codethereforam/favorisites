@@ -44,6 +44,20 @@
                     });
             }
 
+            function retrieveAndSetUsername() {
+                $http.get("/sessions/user")
+                    .then(function (res) {
+                        console.log(res.data);
+                        if (res.data !== null) {
+                            $scope.username = res.data.username;
+                        } else {
+                            $scope.step = [true, false];
+                        }
+                    }, function (err) {
+                        alert(err.data);
+                    });
+            }
+
             $scope.forget = function () {
                 $http.post("/users/forget_password", JSON.stringify({
                     emailCaptcha: $scope.emailCaptcha
@@ -52,8 +66,25 @@
                     if (res.data.success) {
                         // jump to next step
                         $scope.step = [false, true];
+                        retrieveAndSetUsername();
                     } else {
                         functions.showWrongSpanAndMessage(document.getElementById("emailCaptcha"), res.data.errors[0].errorMsg);
+                    }
+                }, function (err) {
+                    alert(err.data);
+                });
+            };
+
+            $scope.resetPassword = function () {
+                $http.post("/users/reset_password", JSON.stringify({
+                    password: $scope.password,
+                    confirmedPassword: $scope.confirmedPassword
+                })).then(function (res) {
+                    console.log(res.data);
+                    if (res.data.success) {
+                        window.location.href = "/login.html";
+                    } else {
+                        functions.showWrongSpanAndMessage(document.getElementById("password"), res.data.errors[0].errorMsg);
                     }
                 }, function (err) {
                     alert(err.data);
