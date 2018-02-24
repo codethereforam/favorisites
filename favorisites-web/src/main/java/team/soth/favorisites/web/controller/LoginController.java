@@ -20,10 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.soth.favorisites.common.util.Md5Util;
 import team.soth.favorisites.common.util.ResultUtil;
-import team.soth.favorisites.dao.dto.ResetPassword;
-import team.soth.favorisites.dao.dto.UserForgetPasswordInfo;
-import team.soth.favorisites.dao.dto.UserLoginInfo;
-import team.soth.favorisites.dao.dto.UserRegisterInfo;
+import team.soth.favorisites.dao.dto.*;
 import team.soth.favorisites.dao.model.User;
 import team.soth.favorisites.dao.model.UserExample;
 import team.soth.favorisites.service.UserService;
@@ -205,7 +202,9 @@ public class LoginController {
 	//检查验证码
 	@ApiOperation("忘记密码")
 	@PostMapping("/users/forget_password")
-	public ComplexResult forgetPassword(String emailCaptcha, HttpSession session) {
+	public ComplexResult forgetPassword(@RequestBody ForgetPasswordInfo forgetPasswordInfo, HttpSession session) {
+		logger.debug("method forgetPassword get ForgetPasswordInfo:" + forgetPasswordInfo);
+		String emailCaptcha = forgetPasswordInfo.getEmailCaptcha();
 		//检查参数是否为空
 		if(StringUtils.isBlank(emailCaptcha)) {
 			return ResultUtil.getComplexErrorResult("验证码不能为空");
