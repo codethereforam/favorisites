@@ -4,7 +4,7 @@
             $scope.logout = function () {
                 $http.delete("/sessions")
                     .then(function (res) {
-                        if(res.data.success) {
+                        if (res.data.success) {
                             window.location.href = "/login.html";
                         } else {
                             alert("server went wrong...");

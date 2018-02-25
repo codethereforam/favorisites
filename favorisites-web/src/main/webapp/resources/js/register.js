@@ -25,16 +25,22 @@ function checkRegisterButton() {
 }
 
 window.onload = function () {
-    functions.userJudge = function () {
-        var oUserinput = document.getElementById("username");
+    var usernameObject = document.getElementById("username");
+    var passwordObject = document.getElementById("password");
+    var confirmedPasswordObject = document.getElementById("confirmedPassword");
+    var emailObject = document.getElementById("email");
+    var emailCaptchaObject = document.getElementById("emailCaptcha");
 
-        oUserinput.onfocus = function () {
+    var firstPassword = "";
+
+    functions.checkUsername = function () {
+        usernameObject.onfocus = function () {
             functions.focusInputBack(this, "0px -55px");
             functions.resetOutline(this);
             functions.hideCheckSpan(this);
         };
 
-        oUserinput.onkeyup = function () {
+        usernameObject.onkeyup = function () {
             functions.blurInputBack(this, "0px 0px");
             var thisValue = this.value;
             //非空,不能有空格
@@ -53,22 +59,20 @@ window.onload = function () {
                 usernameValid = true;
             }
             if (usernameValid && usernameNotExist) {
-                functions.showRightSpan(this);
+                functions.showRightSpanAndHideMessage(this);
             }
             checkRegisterButton();
         }
     };
 
-    functions.passwordJudge = function () {
-        var oPasswordinput = document.getElementById("password");
-
-        oPasswordinput.onfocus = function () {
+    functions.checkPassword = function () {
+        passwordObject.onfocus = function () {
             functions.focusInputBack(this, "-325px -55px");
             functions.resetOutline(this);
             functions.hideCheckSpan(this);
         };
 
-        oPasswordinput.onkeyup = oPasswordinput.onblur = function () {
+        passwordObject.onkeyup = passwordObject.onblur = function () {
             functions.focusInputBack(this, "-325px 0px");
             var thisValue = this.value;
             //不能全为空格，首尾允许有空格
@@ -84,41 +88,39 @@ window.onload = function () {
                 functions.showWrongSpanAndMessage(this, "密码仅支持字母、数字及标点符号");
                 passwordValid = false;
             } else if (thisValue !== functions.aInputs[2].value) {
-                functions.temppassword = thisValue;
-                functions.showWrongSpanAndMessage(functions.aInputs[2], "两个密码不匹配");
-                functions.showRightSpanSimply(this);
+                firstPassword = thisValue;
+                functions.showWrongSpanAndMessage(confirmedPasswordObject, "两个密码不匹配");
+                functions.showRightSpan(this);
                 functions.resetOutline(this);
                 passwordValid = false;
             } else {
-                functions.temppassword = thisValue;
-                functions.showRightSpan(this);
-                functions.showRightSpan(functions.aInputs[2]);
+                firstPassword = thisValue;
+                functions.showRightSpanAndHideMessage(this);
+                functions.showRightSpanAndHideMessage(confirmedPasswordObject);
                 passwordValid = true;
             }
             checkRegisterButton();
         }
     };
 
-    functions.cpasswordJudge = function () {
-        var oCpasswordinput = document.getElementById("confirmedPassword");
-
-        oCpasswordinput.onfocus = function () {
+    functions.checkConfirmedPassword = function () {
+        confirmedPasswordObject.onfocus = function () {
             functions.focusInputBack(this, "-325px -55px");
             functions.resetOutline(this);
             functions.hideCheckSpan(this);
         };
 
-        oCpasswordinput.onkeyup = oCpasswordinput.onblur = function () {
+        confirmedPasswordObject.onkeyup = confirmedPasswordObject.onblur = function () {
             functions.focusInputBack(this, "-325px 0px");
             var thisValue = this.value;
             if (thisValue == null || thisValue.replace(/\s/g, "").length === 0) {
                 functions.showWrongSpanAndMessage(this, "此处不能留空");
                 confirmedPasswordValid = false;
-            } else if (functions.temppassword !== thisValue) {
+            } else if (firstPassword !== thisValue) {
                 functions.showWrongSpanAndMessage(this, "两个密码不匹配");
                 confirmedPasswordValid = false;
             } else {
-                functions.showRightSpan(this);
+                functions.showRightSpanAndHideMessage(this);
                 confirmedPasswordValid = true;
                 passwordValid = true;
             }
@@ -126,16 +128,14 @@ window.onload = function () {
         }
     };
 
-    functions.emailJudge = function () {
-        var oEmailinput = document.getElementById("email");
-
-        oEmailinput.onfocus = function () {
+    functions.checkEmail = function () {
+        emailObject.onfocus = function () {
             functions.focusInputBack(this, "-650px -55px");
             functions.resetOutline(this);
             functions.hideCheckSpan(this);
         };
 
-        oEmailinput.onkeyup = oEmailinput.onblur = function () {
+        emailObject.onkeyup = emailObject.onblur = function () {
             functions.focusInputBack(this, "-650px 0px");
             var thisValue = this.value;
             // 非空
@@ -154,23 +154,21 @@ window.onload = function () {
             } else {
                 emailValid = true;
             }
-            if(emailValid && emailNotExist) {
-                functions.showRightSpan(this);
+            if (emailValid && emailNotExist) {
+                functions.showRightSpanAndHideMessage(this);
             }
             checkEmailSendButton();
         }
     };
 
-    functions.codeJudge = function () {
-        var oCodeinput = document.getElementById("emailCaptcha");
-
-        oCodeinput.onfocus = function () {
+    functions.checkEmailCaptcha = function () {
+        emailCaptchaObject.onfocus = function () {
             functions.focusInputBack(this, "-975px -55px");
             functions.resetOutline(this);
             functions.hideCheckSpan(this);
         };
 
-        oCodeinput.onkeyup = oCodeinput.onblur = function () {
+        emailCaptchaObject.onkeyup = emailCaptchaObject.onblur = function () {
             functions.focusInputBack(this, "-975px 0px");
             var thisValue = this.value;
             //非空
@@ -184,16 +182,16 @@ window.onload = function () {
                 functions.showWrongSpanAndMessage(this, "验证码只能包括字母或数字");
                 emailCaptchaValid = false;
             } else {
-                functions.showRightSpan(this);
+                functions.showRightSpanAndHideMessage(this);
                 emailCaptchaValid = true;
             }
             checkRegisterButton();
         }
     };
 
-    functions.userJudge();
-    functions.passwordJudge();
-    functions.cpasswordJudge();
-    functions.emailJudge();
-    functions.codeJudge();
+    functions.checkUsername();
+    functions.checkPassword();
+    functions.checkConfirmedPassword();
+    functions.checkEmail();
+    functions.checkEmailCaptcha();
 };

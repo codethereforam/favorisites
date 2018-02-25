@@ -35,14 +35,14 @@
                     </li>
                     <li>
                         <div class="password-div">
-                            <input name="password" id="password" type="password"
+                            <input name="password" id="password" type="password" autocomplete="on"
                                    placeholder="密码：6~16个字符，首尾不能有空格" ng-model="password">
                         </div>
                         <span class=""></span>
                     </li>
                     <li>
                         <div class="cpassword-div">
-                            <input name="cpassword" id="confirmedPassword"
+                            <input name="cpassword" id="confirmedPassword" autocomplete="on"
                                    type="password" placeholder="确认密码：请再次填写密码" ng-model="confirmedPassword">
                         </div>
                         <span class=""></span>
@@ -69,7 +69,7 @@
 
                     <li>
                         <div class="email-div">
-                            <input id="email" name="email" type="text" value=""
+                            <input id="email" name="email" type="text" autocomplete="off"
                                    placeholder="邮箱：请输入你的邮箱地址" ng-model="email">
                             <button type="button" disabled="disabled"
                                     class="button button-caution button-box button-raised button-giant"
@@ -103,6 +103,6 @@
 </body>
 <script src="js/main.js"></script>
 <script src="js/register.js"></script>
-<script src="common/angular.js"></script>
+<script src="common/angular.min.js"></script>
 <script src="js/registerApp.js"></script>
 </html>

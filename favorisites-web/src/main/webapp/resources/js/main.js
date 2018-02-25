@@ -1,11 +1,10 @@
 var functions = {};
-functions.temppassword = "";
-
 functions.oFormplace = document.getElementById("formplace");
 functions.oErrorinfo = document.getElementById("error-info");
 functions.oErrorbox = document.getElementById("error-box");
 functions.aInputs = functions.oFormplace.getElementsByTagName("input");
 
+// 检查字符串是否是邮箱
 functions.checkEmail = function (strEmail) {
     //声明邮箱正则
     var emailRegex = /^([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
@@ -16,14 +15,16 @@ functions.checkEmail = function (strEmail) {
     return true;
 };
 
-functions.showRightSpanSimply = function (obj) {
+//显示正确图标
+functions.showRightSpan = function (obj) {
     var oSpan = obj.parentNode.parentNode.getElementsByTagName("span")[0];
     if (oSpan) {
         oSpan.className = "checkspan checkright";
     }
 };
 
-functions.showWrongspan = function (obj) {
+//显示错误图标
+functions.showWrongSpan = function (obj) {
     var oSpan = obj.parentNode.parentNode.getElementsByTagName("span")[0];
     if (oSpan) {
         oSpan.className = "checkspan checkwrong";
@@ -47,11 +48,13 @@ functions.resetOutline = function (obj) {
     obj.style['box-shadow'] = "none";
 };
 
-functions.putErrorMessage = function (str) {
+// 设置消息
+functions.setMessage = function (str) {
     functions.oErrorinfo.innerHTML = str;
 };
 
-functions.showErrorBox = function (obj) {
+//显示消息
+functions.showMessageBox = function (obj) {
     var tempLeft = 0;
     var tempTop = 0;
 
@@ -60,15 +63,14 @@ functions.showErrorBox = function (obj) {
         tempTop += obj.offsetTop; //叠加父容器的左边距
         obj = obj.offsetParent;
     }
-    console.log(tempTop);
-    console.log(tempLeft);
     functions.oErrorbox.style['left'] = tempLeft + 320 + "px";
     functions.oErrorbox.style['top'] = tempTop + 2 + "px";
     functions.oErrorbox.style['display'] = "block";
     functions.oErrorinfo.style['display'] = "block";
 };
 
-functions.hideErrorBox = function () {
+//隐藏消息
+functions.hideMessageBox = function () {
     functions.oErrorbox.style['display'] = "none";
     functions.oErrorinfo.style['display'] = "none";
 };
@@ -82,22 +84,25 @@ functions.blurInputBack = function (obj, str) {
     obj.parentNode.style['background-position'] = str;
 };
 
-functions.showRightSpan = function (obj) {
-    functions.showRightSpanSimply(obj);
+// 显示正确图标并且隐藏消息
+functions.showRightSpanAndHideMessage = function (obj) {
+    functions.showRightSpan(obj);
     functions.resetOutline(obj);
-    functions.hideErrorBox(obj);
+    functions.hideMessageBox(obj);
 };
 
+// 显示正确图标和消息
 functions.showRightSpanAndMessage = function (obj, str) {
-    functions.showRightSpanSimply(obj);
+    functions.showRightSpan(obj);
     functions.changeOutline(obj);
-    functions.putErrorMessage(str);
-    functions.showErrorBox(obj);
+    functions.setMessage(str);
+    functions.showMessageBox(obj);
 };
 
+// 显示错误图标和消息
 functions.showWrongSpanAndMessage = function (obj, str) {
-    functions.showWrongspan(obj);
+    functions.showWrongSpan(obj);
     functions.changeOutline(obj);
-    functions.putErrorMessage(str);
-    functions.showErrorBox(obj);
+    functions.setMessage(str);
+    functions.showMessageBox(obj);
 };

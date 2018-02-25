@@ -16,7 +16,7 @@
                             functions.showWrongSpanAndMessage(element, res.data.errors[0].errorMsg);
                         }
                         if (usernameValid && usernameNotExist) {
-                            functions.showRightSpan(element);
+                            functions.showRightSpanAndHideMessage(element);
                         }
                         checkRegisterButton();
                     }, function (err) {
@@ -41,7 +41,7 @@
                             functions.showWrongSpanAndMessage(element, res.data.errors[0].errorMsg);
                         }
                         if (emailValid && emailNotExist) {
-                            functions.showRightSpan(element);
+                            functions.showRightSpanAndHideMessage(element);
                         }
                         checkRegisterButton();
                     }, function (err) {
@@ -90,7 +90,7 @@
                                 if (error.field === null) {
                                     error.field = "username";
                                 }
-                                if(error.field === "sex") {
+                                if (error.field === "sex") {
                                     error.field = "sex-secret";
                                 }
                                 var element = document.getElementById(error.field);

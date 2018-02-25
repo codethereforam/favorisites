@@ -22,7 +22,7 @@
                             functions.showWrongSpanAndMessage(element, res.data.errors[0].errorMsg);
                         }
                         // if (emailValid && emailNotExist) {
-                        //     functions.showRightSpan(element);
+                        //     functions.showRightSpanAndHideMessage(element);
                         // }
                         // checkRegisterButton();
                     }, function (err) {
