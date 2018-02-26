@@ -29,14 +29,14 @@
     width: 203px;
 }
 
-#codebutton {
+#emailSendButton {
     height: 42px;
     width: 60px;
     margin-top: 5px;
     margin-left: 0px;
 }
 
-#submitbutton {
+#nextStepButton #resetButton {
     height: 44px;
     width: 195px;
     margin-top: 4px;

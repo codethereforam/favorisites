@@ -41,13 +41,13 @@
                                    ng-model="$parent.emailCaptcha">
                         </div>
                         <button type="button" class="button button-caution button-box button-raised button-giant"
-                                id="codebutton" ng-click="sendCaptcha()">
+                                id="emailSendButton" ng-click="sendCaptcha()">
                             <i class="fa">发送</i>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="button button-caution button-box button-raised button-giant"
-                                id="submitbutton" ng-click="forget()">
+                                id="nextStepButton" ng-click="forget()">
                             <i class="fa">下一步</i>
                         </button>
                     </li>
@@ -81,7 +81,7 @@
                     </li>
                     <li>
                         <button type="button" class="button button-caution button-box button-raised button-giant"
-                                id="submitbutton" ng-click="resetPassword()">
+                                id="resetButton" ng-click="resetPassword()">
                             <i class="fa">重置</i>
                         </button>
                     </li>

@@ -1,8 +1,0 @@
-subject： 开发
-description：
-create_date: 2017.10.26
-
-安排（版本控制）
-V0.1: 登录注册
-V0.2: 个人主页
-

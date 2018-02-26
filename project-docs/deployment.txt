@@ -11,7 +11,7 @@ create_date: 2017.11.13 by thinkam
       运行脚本： project-datamodel/favorisites.sql
     6.修改favorisites-service jdbc-config.properties
     4.favorisites-web： jetty run
-    6.查看resrful api文档
+    6.查看restful api文档
         http://localhost:9999/swagger-ui.html
     7.打开界面：
         e.g. http://localhost:9999/login.html
