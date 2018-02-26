@@ -5,9 +5,9 @@ functions.oErrorbox = document.getElementById("error-box");
 functions.aInputs = functions.oFormplace.getElementsByTagName("input");
 
 // 检查字符串是否是邮箱
-functions.checkEmail = function (strEmail) {
+functions.checkEmailFormat = function (strEmail) {
     //声明邮箱正则
-    var emailRegex = /^([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    var emailRegex = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     if (!emailRegex.test(strEmail)) {
         console.log("invalid email");
         return false;

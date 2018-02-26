@@ -147,7 +147,7 @@ window.onload = function () {
                 functions.showWrongSpanAndMessage(this, "邮箱长度不能超过50");
                 emailValid = false;
                 // 邮箱格式验证
-            } else if (functions.checkEmail(thisValue) === false) {
+            } else if (functions.checkEmailFormat(thisValue) === false) {
                 functions.showWrongSpanAndMessage(this, "邮箱格式不符合要求");
                 emailValid = false;
                 // 不能与已有邮箱重复
