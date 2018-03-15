@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-基于Spring+SpringMVC+Mybatis开发的登录、注册项目，该项目前后端分离，使用restful风格，可基于此项目快速开发简单的web系统
+基于Spring + SpringMVC + Mybatis开发的登录、注册项目，该项目前后端分离，使用restful风格，可基于此项目快速开发简单的web系统
 
 ### 功能
 
@@ -10,6 +10,10 @@
 - 登录
     - 找回密码
     - 重置密码
+
+### 业务逻辑
+
+[项目业务逻辑](/project-docs/businessLogicAnalysis.txt)
 
 ### 组织结构
 
@@ -54,6 +58,50 @@ favorisites-web & favorisites-admin -> favorisites-service -> favorisites-dao ->
 ### 编程规约
 
 后台参照`阿里巴巴Java开发手册`
+
+## 项目运行
+
+1. 下载项目并构建： git clone xxx; mvn clean install
+
+2. 新建数据库: project-datamodel/favorisites.sql
+
+3. 修改数据库配置文件: favorisites-service/src/main/resources/jdbc-config.properties
+
+4. 修改邮件配置文件： favorisites-common/src/main/resources/email.properties.template
+
+5. mvn jetty run
+
+6. 打开页面: http://localhost:9999/login.html & http://localhost:9999/swagger-ui.html
+
+## 项目预览
+
+### 数据模型
+
+```sql
++-------------+---------------------+------+-----+---------+----------------+
+| Field       | Type                | Null | Key | Default | Extra          |
++-------------+---------------------+------+-----+---------+----------------+
+| user_id     | int(10) unsigned    | NO   | PRI | NULL    | auto_increment |
+| username    | varchar(20)         | NO   |     | NULL    |                |
+| password    | varchar(32)         | NO   |     | NULL    |                |
+| salt        | varchar(32)         | YES  |     | NULL    |                |
+| email       | varchar(50)         | NO   |     | NULL    |                |
+| sex         | tinyint(3) unsigned | YES  |     | NULL    |                |
+| locked      | tinyint(3) unsigned | YES  |     | NULL    |                |
+| create_time | datetime            | YES  |     | NULL    |                |
++-------------+---------------------+------+-----+---------+----------------+
+```
+
+### 界面
+
+![login.png](/project-docs/images/login.png)
+![forget-password.png](/project-docs/images/forget-password.png)
+![reset-password.png](/project-docs/images/reset-password.png)
+![register.png](/project-docs/images/register.png)
+
+### restful api
+
+![restful.png](/project-docs/images/restful.png)
 
 ## 项目分支
 
