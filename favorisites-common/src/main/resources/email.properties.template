@@ -1,0 +1,8 @@
+#FIXME: 该文件应被重命名为email.properties并修改相关信息
+# sender info
+sender.account=aaa@163.com
+sender.password=aaabbb
+sender.smtp.host=smtp.163.com
+sender.name=favorisites
+# 设置为debug模式, 可以查看详细的发送log
+debug=TRUE

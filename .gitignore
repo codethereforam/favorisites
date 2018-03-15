@@ -11,3 +11,4 @@ target
 *.log.*
 *.cache
 *.lock
+favorisites-common/src/main/resources/email.properties
